@@ -47,25 +47,39 @@ class ModeloBase extends Ayuda{
 		return $this->arr_reg;
 	}
 	/**
+	 * 
+	 * @param array $arr_cmps	
+	 * @param variant $cmp_id_val	
+	 */
+	
+	/**
 	 * Ejecuta el guardar para un registro
 	 * @param array $arr_cmps	Arreglo con los nombres y valores de los campos de la forma
 	 * @param variant $cmp_id_val	Id del registro a actualizar
+	 * @param bool $solo_actualizar	Bandera que al ser activada impide crear registros, haciendo sólo actualizaciones. Esta bandera se activa para casos donde el registro es creado previamente en modo inhabilitado.
 	 */
-	public function setGuardarReg($arr_cmps, $cmp_id_val) {
+	public function setGuardarReg($arr_cmps, $cmp_id_val, $solo_actualizar=false) {
 		if($cmp_id_val){
 			//Modificar registro
 			$arr_act = array();
 			foreach($arr_cmps as $cmp_nom => $cmp_val){
-				if($cmp_nom!=$cmp_id_nom){
+				if($cmp_nom!=$this->cmp_id_nom){
 					$arr_act[] = "`".$cmp_nom."` = ".$cmp_val;
 				}
 			}
 			$qry_act = "UPDATE `".$this->bd->getBD()."`.`".$this->tbl_nom."` SET ".implode(",", array_values($arr_act))." WHERE `".$this->cmp_id_nom."` ='".$cmp_id_val."' LIMIT 1;";
 			$this->bd->ejecutaQry($qry_act);
 		}else{
-			//Nuevo registro
-			$qry_act = "INSERT INTO `".$this->bd->getBD()."`.`".$this->tbl_nom."` (".implode(",",array_keys($arr_cmps)).") VALUES (".implode(",",array_values($arr_cmps)).");";
-			$cmp_id_val = $this->bd->ejecutaQryInsert($qry_act);
+			//Si se activa la bandera solo_actualizar, no permite guardar y en su lugar se genera un error
+			if($solo_actualizar===false){
+				//Nuevo registro
+				$qry_act = "INSERT INTO `".$this->bd->getBD()."`.`".$this->tbl_nom."` (".implode(",",array_keys($arr_cmps)).") VALUES (".implode(",",array_values($arr_cmps)).");";
+				$cmp_id_val = $this->bd->ejecutaQryInsert($qry_act);
+			}else{
+				//Si $cmp_id_val está vacío
+				$this->setError("Argumento id vacío", "En función setGuardarReg se mandó el argumento id vacío.");
+			}
+			
 		}
 		$this->cmp_id_val = $cmp_id_val;
 	}

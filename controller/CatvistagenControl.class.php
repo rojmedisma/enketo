@@ -6,14 +6,27 @@
  * @author Ismael Rojas
  */
 class CatvistagenControl extends TableroBase{
-	private string $cat_frm_controlador;
 	public function __construct() {
 		parent::__constructTablero();
 		$this->setPaginaDistintivos();
 		$this->setUsarLibVista(true);
 		$this->defineVista("Tablero.php");
-		
-		
+	}
+	public function inventario() {
+		$this->arr_param = array(
+			'permiso_borrar'=>'borrar-invent',
+			'permiso_edicion'=>'ae-inventario',
+			'cmp_id_nom'=>'inventario_id',
+			'controlador_frm'=>'inventariofrm',
+			'accion_frm'=>'inicio',
+			'catalogo'=>'inventario'
+		);
+		$this->setArrDatoVistaValor('tit_tabla', 'Inventario');
+		$inventario = new Inventario();
+		$inventario->setArrTblInv();
+		$this->arr_tabla = $inventario->getArrTbl();
+		//echo json_encode($this->arr_tabla);
+		parent::setArrHTMLTagLiNavItem();	//Se crean los items del tablero
 	}
 	/**
 	 * Acción de consulta de registros del catálogo de usuarios
@@ -24,7 +37,8 @@ class CatvistagenControl extends TableroBase{
 			'permiso_edicion'=>'ae-usuario',
 			'cmp_id_nom'=>'cat_usuario_id',
 			'controlador_frm'=>'catfrmgen',
-			'catalogo'=>'cat_usuario'
+			'accion_frm'=>$this->getAccion(),
+			'catalogo'=>$this->getAccion()
 		);
 		
 		$this->setArrDatoVistaValor('tit_tabla', 'Catálogo de usuarios');
@@ -42,7 +56,8 @@ class CatvistagenControl extends TableroBase{
 			'permiso_edicion'=>'ae-grupo',
 			'cmp_id_nom'=>'cat_grupo_id',
 			'controlador_frm'=>'catfrmgpo',
-			'catalogo'=>'cat_grupo'
+			'accion_frm'=>$this->getAccion(),
+			'catalogo'=>$this->getAccion()
 		);
 		
 		$this->setArrDatoVistaValor('tit_tabla', 'Catálogo de grupos');
@@ -66,7 +81,7 @@ class CatvistagenControl extends TableroBase{
 	 * @return string
 	 */
 	public function getHTMLBtnAbrir($cmp_id_val) {
-		return '<a href="'.define_controlador($this->getParametro('controlador_frm'), $this->getAccion(), false, array($this->getParametro('cmp_id_nom')=>$cmp_id_val)).'" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Abrir</a>';
+		return '<a href="'.define_controlador($this->getParametro('controlador_frm'), $this->getParametro('accion_frm'), false, array($this->getParametro('cmp_id_nom')=>$cmp_id_val)).'" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Abrir</a>';
 	}
 	/**
 	 * Devuelve la estructura HTML para el botón borrar, que se ejecuta en el registro con id definido en el argumento
@@ -90,10 +105,12 @@ class CatvistagenControl extends TableroBase{
 	 */
 	public function getHTMLBtnAlta() {
 		if($this->tienePermiso($this->getParametro('permiso_edicion'))){
-			return '<a href="'.define_controlador($this->getParametro('controlador_frm'), $this->getAccion()).'" class="btn btn-info btn-sm"><i class="fa fa-fw fa-file"></i> Alta registro</a>';
+			return '<a href="'.define_controlador($this->getParametro('controlador_frm'), $this->getParametro('accion_frm')).'" class="btn btn-info btn-sm"><i class="fa fa-fw fa-file"></i> Alta registro</a>';
 		}else{
 			return '';
 		}
-		
+	}
+	public function getArrParam() {
+		return $this->arr_param;
 	}
 }

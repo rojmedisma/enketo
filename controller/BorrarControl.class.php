@@ -58,4 +58,16 @@ class BorrarControl extends ControladorBase{
 		$cat_grupo->borrarRegistro($cat_grupo_id);
 		redireccionar($this->controlador_destino, $this->accion_destino);
 	}
+	/**
+	 * Acción borrar registro para el formulario de inventario
+	 */
+	public function inventario() {
+		$inventario_id = (isset($_REQUEST['inventario_id']))? intval($_REQUEST['inventario_id']) : 0;
+		if(!$this->tienePermiso('borrar-invent')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Borrar inventario'));
+		}
+		$inventario = new Inventario();
+		$inventario->borrarRegistro($inventario_id);
+		redireccionar($this->controlador_destino, $this->accion_destino);
+	}
 }
