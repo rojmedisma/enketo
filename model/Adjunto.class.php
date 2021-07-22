@@ -19,7 +19,7 @@ class Adjunto extends ModeloBase{
 	 * @param string $nom_arc_real	Nombre del archivo
 	 * @param string $nom_arc_sist	Nombre del archivo asignado por el sistema
 	 */
-	public function setRegistrar($adjunto_tipo, $ruta_raiz, $ruta_archivo, $nom_arc_real, $nom_arc_sist){
+	public function setRegistrar($adjunto_tipo, $ruta_raiz, $ruta_archivo, $nom_arc_real, $nom_arc_sist, $gale_cmp_id_nom="", $gale_cmp_id_val=""){
 		$cat_usuario_id = $this->getUsuarioId();
 		$arr_cmps_upd = array(
 				"`adjunto_id`"=>"NULL",
@@ -32,6 +32,9 @@ class Adjunto extends ModeloBase{
 				"`fecha`"=>"CURDATE()",
 				"`hora`"=>"CURTIME()",
 		);
+		if($gale_cmp_id_nom!=="" && $gale_cmp_id_val!==""){
+			$arr_cmps_upd["`".$gale_cmp_id_nom."`"] = txt_sql($gale_cmp_id_val);
+		}
 		$this->adjunto_id = $this->bd->ejecutaQryInsertDeArr($arr_cmps_upd, "adjunto");
 		//Se inserta el valor de orden con el valor de adjunto_id
 		//$qry_orden = "UPDATE `".$this->bd->getBD()."`.`adjunto` SET `orden` = '".$this->adjunto_id."' WHERE `adjunto`.`adjunto_id` = '".$this->adjunto_id."'; ";
@@ -57,6 +60,10 @@ class Adjunto extends ModeloBase{
 			return false;
 		}
 	}
-	
+	public function setArrTblAdj($and="") {
+		$and_ft = " AND `borrar` IS NULL ".$and;
+		$arr_tbl = $this->bd->getArrDeTabla($this->tbl_nom, $and_ft);
+		$this->arr_tbl = $arr_tbl;
+	}
 }
 

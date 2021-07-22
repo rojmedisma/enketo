@@ -82,5 +82,33 @@ class GuardarControl extends ControladorBase{
 		$log->setRegLog('cat_grupo_id', $cat_grupo_id, 'Guardar', 'Aviso', 'Se guardó registro de Catálogo de grupo');
 		redireccionar($this->controlador_destino, $this->accion_destino, array('cat_grupo_id'=>$cat_grupo_id));
 	}
-	
+	public function inventario() {
+		$inventario_id = (isset($_REQUEST['inventario_id']))? intval($_REQUEST['inventario_id']) : 0;
+		if(!$this->tienePermiso('borrar-invent')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Guardar inventario'));
+		}
+		$inventario = new Inventario();
+		$arr_cmps_cu = $inventario->getArrCmpsTbl();
+		$arr_cmps = array();
+		foreach($arr_cmps_cu as $arr_cmps_cu_det){
+			$cmp_nom = $arr_cmps_cu_det['Field'];
+			switch($cmp_nom){
+				case 'inventario_id':
+				case 'borrar':
+					break;
+				default:
+					$arr_cmps[$cmp_nom] = (isset($_REQUEST[$cmp_nom]))? txt_sql($_REQUEST[$cmp_nom]) : txt_sql("");
+					break;
+			}
+		}
+		
+		$inventario->setGuardarReg($arr_cmps, $inventario_id, true);
+		$inventario_id = $inventario->getCmpIdVal();
+		if(!$inventario_id || $inventario->getEsError()){
+			$this->redireccionaErrorDeArr($inventario->getArr1erError());
+		}
+		$log = new Log();
+		$log->setRegLog('inventario_id', $inventario_id, 'Guardar', 'Aviso', 'Se guardó registro de Inventario');
+		redireccionar($this->controlador_destino, $this->accion_destino, array('inventario_id'=>$inventario_id));
+	}
 }

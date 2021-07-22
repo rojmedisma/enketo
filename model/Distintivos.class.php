@@ -54,6 +54,10 @@ class Distintivos{
 					"titulo_pagina"=>"Registros de log",
 					"arr_pag_ant"=>array()
 				),
+				"inventario"=>array(
+					"titulo_pagina"=>"Consulta inventario",
+					"arr_pag_ant"=>array()
+				),
 			),
 			"catfrmgen"=>array(
 				"cat_usuario"=>array(
@@ -85,8 +89,13 @@ class Distintivos{
 					"titulo_pagina"=>"Importar muestra",
 					"arr_pag_ant"=>array()
 				),
+			),
+			"inventariofrm"=>array(
+				"inicio"=>array(
+					"titulo_pagina"=>"Inventario",
+					"arr_pag_ant"=>array()
+				),
 			)
-			
 		);
 	}
 	/**

@@ -26,10 +26,9 @@
 					<div class="container-fluid">
 						<?php
 						switch (strtolower($controlador_obj->getControlador())){
-							case 'tablero':		include_once 'modulos/Tablero/Inicio.php';	break;
-							case 'cuestvista':	include_once 'modulos/Cuest/Vista.php';	break;
-							case 'cuestforma':	include_once 'modulos/Cuest/Forma.php';	break;
-							case 'catvistagen':	include_once 'modulos/Tablero/CatVistaGen.php';	break;
+							case 'tablero':			include_once 'modulos/Tablero/Inicio.php';	break;
+							case 'catvistagen':		include_once 'modulos/Tablero/CatVistaGen.php';	break;
+							case 'inventariofrm':	include_once 'modulos/Tablero/Inventariofrm.php';	break;
 							case 'catfrmgen':
 								switch (strtolower($controlador_obj->getAccion())){
 									case 'cat_usuario': include_once 'modulos/Tablero/CatFrmGen/CatUsuario.php';	break;
@@ -40,14 +39,7 @@
 							case 'catfrmgpo':
 							case 'cat_grupo': 
 								include_once 'modulos/Tablero/CatFrmGen/CatGrupo.php';	break;
-							case 'muestra':
-								switch (strtolower($controlador_obj->getAccion())){
-									case 'inicio':	include_once 'modulos/Tablero/Muestra/Vista.php'; break;
-									case 'validar':
-									case 'integrar':
-										include_once 'modulos/Tablero/Muestra/Resultado.php'; break;
-								}
-								break;
+							
 										
 						}
 						?>
@@ -76,10 +68,9 @@
 		<?php
 		include_once 'modulos/Scripts.php';
 		switch (strtolower($controlador_obj->getControlador())){
-			case 'cuestvista':	include_once 'modulos/ScriptCuestVista.php';	break;
-			case 'cuestforma':	echo $controlador_obj->getHTMLScriptCuest();	break;
+			case 'inventariofrm':
+				include_once 'modulos/ScriptInventario.php';	break;
 			case 'catvistagen':	
-			case 'muestra':
 				include_once 'modulos/ScriptCatVistaGen.php';	break;
 			case 'catfrmgen':
 				switch (strtolower($controlador_obj->getAccion())){

@@ -214,7 +214,7 @@ class ControladorBase{
 	 * Devuelve el arreglo de permisos
 	 * @return array
 	 */
-	protected function getArrPermisos(){
+	public function getArrPermisos(){
 		return $this->arr_permisos;
 	}
 	/**

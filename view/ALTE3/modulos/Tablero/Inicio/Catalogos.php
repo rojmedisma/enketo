@@ -1,3 +1,8 @@
+<?php if($controlador_obj->tienePermiso('al-inventario')){ ?>
+<a href="<?php echo define_controlador('catvistagen', 'inventario')?>" class="btn btn-app">
+	<i class="fas fa-car"></i> Inventario
+</a>
+<?php }?>
 <?php if($controlador_obj->tienePermiso('al-usuario')){ ?>
 <a href="<?php echo define_controlador('catvistagen', 'cat_usuario')?>" class="btn btn-app">
 	<i class="fas fa-user"></i> Usuarios

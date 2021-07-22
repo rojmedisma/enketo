@@ -14,6 +14,7 @@
 	<div class="card-body">
 		<?php
 		switch (strtolower($controlador_obj->getAccion())){
+			case 'inventario': include_once 'CatVistaGen/Inventario.php';	break;
 			case 'cat_usuario': include_once 'CatVistaGen/CatUsuario.php';	break;
 			case 'cat_grupo': include_once 'CatVistaGen/CatGrupo.php';	break;
 			case 'log': include_once 'CatVistaGen/Log.php';	break;

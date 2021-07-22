@@ -5,9 +5,6 @@
 			<li class="nav-item">
 				<a class="nav-link<?php echo $controlador_obj->getDatoVistaValor('activa_gen'); ?>" href="<?php echo define_controlador('catfrmgpo', 'cat_grupo', false, array('cat_grupo_id'=>$controlador_obj->getDatoVistaValor('cat_grupo_id'), 'ver_vista'=>'general'))?>">Por grupo</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link<?php echo $controlador_obj->getDatoVistaValor('activa_cuest'); ?>" href="<?php echo define_controlador('catfrmgpo', 'cat_grupo', false, array('cat_grupo_id'=>$controlador_obj->getDatoVistaValor('cat_grupo_id'), 'ver_vista'=>'cuestionario'))?>">Por grupo - cuestionario</a>
-			</li>
 		</ul>
 	</div>
 	<div class="card-body">

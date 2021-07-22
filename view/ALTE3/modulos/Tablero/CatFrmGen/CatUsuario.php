@@ -22,10 +22,7 @@
 						<div class="col-md-4"><?php echo $controlador_obj->frm_al3->cmpTexto('ap_paterno', "Apellido paterno"); ?></div>
 						<div class="col-md-4"><?php echo $controlador_obj->frm_al3->cmpTexto('ap_materno', "Apellido materno"); ?></div>
 					</div>
-					<div class="row">
-						<div class="col-md-4"><?php echo $controlador_obj->frm_al3->cmpSelectDeTbl('cat_estado_id', 'cat_estado', 'cat_estado_id', 'descripcion', '', 'Estado'); ?></div>
-						<div class="col-md-4"><?php echo $controlador_obj->frm_al3->cmpSelectDeTbl('cat_municipio_id', 'cat_municipio', 'cat_municipio_id', 'descripcion', $controlador_obj->getDatoVistaValor('and_estado'), 'Municipio'); ?></div>
-					</div>
+					
 					<h4>Datos de autentificación</h4>
 					<div class="row">
 						<div class="col-md-4"><?php echo $controlador_obj->frm_al3->cmpTexto('usuario', "Usuario"); ?></div>
@@ -69,7 +66,6 @@
 						<tr>
 							<th scope="col">Permiso</th>
 							<th scope="col">Descripción</th>
-							<th scope="col">Tipo</th>
 							<th scope="col">Orden</th>
 						</tr>
 					</thead>
@@ -78,7 +74,6 @@
 						<tr>
 							<td><?php echo $arr_det_gpo['cp_tit_corto']; ?></td>
 							<td><?php echo $arr_det_gpo['cp_descripcion']; ?></td>
-							<td><?php echo $arr_det_gpo['cp_tipo_desc']; ?></td>
 							<td><?php echo $arr_det_gpo['cp_orden']; ?></td>
 						</tr>
 						<?php }?>

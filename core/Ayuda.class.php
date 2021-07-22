@@ -101,7 +101,7 @@ class Ayuda{
 	 * @return int
 	 */
 	protected function getUsuarioId(){
-		$usuario_id = (isset($_SESSION['usuario_id']))? $_SESSION['usuario_id'] : "";
+		$usuario_id = (isset($_SESSION['cat_usuario_id']))? $_SESSION['cat_usuario_id'] : "";
 		return $usuario_id;
 	}
 }

@@ -16,9 +16,9 @@ class TableroControl extends TableroBase{
 	public function inicio() {
 		$this->defineVista("Tablero.php");
 		
-		$cat_cuestionario = new CatCuestionario();
-		$cat_cuestionario->setArrTbl();
-		$this->arr_cat_cuestionario = $cat_cuestionario->getArrTbl();
+		//$cat_cuestionario = new CatCuestionario();
+		//$cat_cuestionario->setArrTbl();
+		//$this->arr_cat_cuestionario = $cat_cuestionario->getArrTbl();
 		parent::setArrHTMLTagLiNavItem();	//Se crean los items del tablero
 	}
 	/**

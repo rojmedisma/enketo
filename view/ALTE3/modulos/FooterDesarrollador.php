@@ -14,5 +14,16 @@
 		<textarea class="form-control" rows="2" style="color: white;background-color: darkslategrey;"><?php echo $controlador_obj->imprimeArrModulos(); ?></textarea>
 	</div>
 	<?php }?>
-	
+	<?php if(method_exists($controlador_obj, "getArrParam")){?>
+	<div class="form-group">
+		<label>Arreglo arr_param </label>
+		<textarea class="form-control" rows="2" style="color: white;background-color: darkslategrey;"><?php echo json_encode($controlador_obj->getArrParam()); ?></textarea>
+	</div>
+	<?php }?>
+	<?php if(method_exists($controlador_obj, "getArrPermisos")){?>
+	<div class="form-group">
+		<label>Arreglo arr_permisos </label>
+		<textarea class="form-control" rows="2" style="color: white;background-color: darkslategrey;"><?php echo json_encode($controlador_obj->getArrPermisos()); ?></textarea>
+	</div>
+	<?php }?>
 </footer><!-- Termina Footer para Desarrolladro -->

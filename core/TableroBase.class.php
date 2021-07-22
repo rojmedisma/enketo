@@ -30,8 +30,8 @@ class TableroBase extends ControladorBase{
 	 */
 	protected function setArrHTMLTagLiNavItem() {
 		$this->setArrHTMLTagLiNavItemTablero();
-		$this->setArrHTMLTagLiNavItemCuest();
-		$this->setArrHTMLTagLiNavItemMuestra();
+		//$this->setArrHTMLTagLiNavItemCuest();
+		//$this->setArrHTMLTagLiNavItemMuestra();
 		$this->setArrHTMLTagLiNavItemCat();
 		$this->setArrHTMLTagLiNavItemConf();
 	}
@@ -53,9 +53,16 @@ class TableroBase extends ControladorBase{
 	 * Opciones de consulta de registros de tipo catálogo del menú lateral fijo izquierdo para el Tablero
 	 */
 	protected function setArrHTMLTagLiNavItemCat(){
+		$inventario_id = (isset($_REQUEST['inventario_id']))? intval($_REQUEST['inventario_id']) : 0;
 		$cat_usuario_id = (isset($_REQUEST['cat_usuario_id']))? intval($_REQUEST['cat_usuario_id']) : 0;
 		$cat_grupo_id = (isset($_REQUEST['cat_grupo_id']))? intval($_REQUEST['cat_grupo_id']) : 0;
 		$alte3_html = new ALTE3HTML();
+		
+		$tag_Inic_inventario = '';
+		if($this->tienePermiso('al-inventario')){
+			$alte3_html->setArrHTMLTagLiNavItemCat('inventario_id', $inventario_id, $this->getControlador(), $this->getAccion(), 'catvistagen', 'inventario', 'inventariofrm', 'inicio', $this->es_nuevo, 'fas fa-car', 'Inventario');
+			$tag_Inic_inventario = $alte3_html->getHTMLContenido();
+		}
 		
 		$tag_lnic_cat_usuario = '';
 		if($this->tienePermiso('al-usuario')){
@@ -71,6 +78,7 @@ class TableroBase extends ControladorBase{
 		if($this->tienePermiso('al-usuario') || $this->tienePermiso('al-grupo')){
 			$arr_html_tag = array(
 				'<li class="nav-header">CATÁLOGOS</li>',
+				$tag_Inic_inventario,
 				$tag_lnic_cat_usuario,
 				$tag_lnic_cat_grupo
 			);
@@ -141,13 +149,7 @@ class TableroBase extends ControladorBase{
 		$arr_tag_item_manual_usu[] = '</li>';
 		$tag_item_manual_usu = tag_string($arr_tag_item_manual_usu);
 		
-		$tag_item_indic = "";
-		if($this->tienePermiso('al-indicadores')){
-			$alte3_html->setHTMLLiNavItem('catfrmgen', 'indicadores', '<i class="nav-icon fas fa-layer-group"></i>&nbsp;<p>Indicadores</p>', 
-				($this->getControlador()=='catfrmgen' && $this->getAccion() == 'indicadores')? array('a_class'=>'nav-link active') : array()
-			);
-			$tag_item_indic = $alte3_html->getHTMLContenido();
-		}
+		
 		
 		
 		
@@ -176,10 +178,7 @@ class TableroBase extends ControladorBase{
 		$arr_li_nav_item = array();
 		$arr_li_nav_item = array(
 			'<li class="nav-header">MÁS OPCIONES</li>',
-			$tag_item_indic,
-			$tag_item_log,
-			$tag_item_manual_usu,
-			$tag_item_cod_fte
+			$tag_item_log
 		);
 		
 		$this->arr_html_tag['li_ni_sb_conf'] = $arr_li_nav_item;
