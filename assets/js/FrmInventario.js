@@ -18,7 +18,7 @@ var FrmInventario = function(){
 	return{
 		activar:function(){
 			$("select[name='veh_marca']").on("change", function(){
-				para_veh_marca($(this));
+				para_veh_marca($(this));	//comentario de prueba
 			});
 		}
 	}
