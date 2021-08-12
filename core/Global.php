@@ -9,10 +9,10 @@ $es_conexion_hosting = false;
 
 if($es_conexion_hosting){
 	$dir_confg = $_SERVER['DOCUMENT_ROOT'].'/config/';
-	$arc_config = 'enketo_hosting.ini';
+	$arc_config = 'granero_hosting.ini';
 }else{
 	$dir_confg = str_replace('htdocs', '', $_SERVER['DOCUMENT_ROOT']) . 'config/';
-	$arc_config = 'enketo.ini';
+	$arc_config = 'granero.ini';
 }
 $global = @parse_ini_file($dir_confg . $arc_config, true);
 if($global==false){

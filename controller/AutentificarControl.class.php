@@ -43,7 +43,7 @@ class AutentificarControl extends ControladorBase{
 	 */
 	public function inicio(){
 		$this->setPaginaDistintivos();
-		$this->defineVista('Introduccion.php');
+		$this->defineVista('Autentificar.php');
 	}
 	/**
 	 * Acción para validar si la información de usuario y contraseña es correcta

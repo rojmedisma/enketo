@@ -1,23 +1,15 @@
-# Proyecto Enketo
+# Proyecto Granero virtual
 
-Proyecto de encuestas a la medida
+Proyecto de sitio para productores de maíz
 
 # Versiones
 
-> Código fuente/origen sacado del proyecto **siap_igei** versión **1.14.0.14**
+> Código fuente/origen sacado del proyecto **enketo** versión **0.0.1.15**
 
-## Versión 0.0.1.14
+## Versión 0.1.1.15
 
-> Cambios en la plataforma
+> Cambios en el proyecto
 
-- Implementación a partir del proyecto **siap_igei**
+- Implementación a partir del proyecto **enketo**
+- Creación de cuestionario demo para Productores
 
-## Versión 0.0.1.15
-
-> Cambios en la plataforma
-
-- Clase core **ControladorBase**. Se cambió a público el método **getArrPermisos**
-- Clase control **CatvistagenControl**. Nuevo parámetro en arreglo **arr_param**
-- Archivo vista **FooterDesarrollador.php**. Despliege de los arreglos arr_param y arr_permisos.
-- Clase core **ModeloBase**. Se modificó el método **setGuardarReg** para meter la bandera **solo_actualizar**
-- Clase core **Ayuda**. Se corrigió el evento **getUsuarioId** con la variable de sesión correcta.

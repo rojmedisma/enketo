@@ -36,7 +36,7 @@ class CuestformaControl extends CuestBase{
 		
 		$this->setPaginaDistintivos();
 		$this->setUsarLibForma(true);
-		$this->defineVista("Tablero.php");
+		$this->defineVista("Mostrador.php");
 		
 		if(!$this->cuestionario_id){
 			$this->cuestionario_id = $this->nuevo();

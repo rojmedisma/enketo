@@ -8,15 +8,12 @@ var Modulo = function(){
 			$("#mdl_bienvenido").modal("show");
 		}
 	}
-	function de_prod_sector_3_y_4(){
-		var v_prod_sector3 = getValueForm('prod_sector3', true);
-		var v_prod_sector4 = getValueForm('prod_sector4', true);
-		
-		mostrarSecciones((v_prod_sector3===1 || v_prod_sector4===1), ["#div_prod_rnpa"]);
-	}
-	function de_prod_tipo(o_this){
-		mostrarSecciones(parseInt(o_this.val())===1, ["#div_prod_curp"]);
-		mostrarSecciones(parseInt(o_this.val())===2, ["#div_prod_rfc", "#div_prod_integ"]);
+	function de_maiz_tot_variedades(){
+		var v_val = $("select[name='maiz_tot_variedades']").val();
+		var v_val_i = (v_val=="")? 0 : parseInt(v_val);
+		console.log(v_val_i);
+		ocultarSecciones((v_val_i<1), ['#div_vari_1']);
+		ocultarSecciones((v_val_i<2), ['#div_vari_2']);
 	}
 	function de_prod_edo(o_this){
 		$("#fg_prod_mpo").hide();
@@ -57,59 +54,12 @@ var Modulo = function(){
 			}
 		});
 	}
-	function adjuntar(e){
-		e.preventDefault();
-		
-		var formData = new FormData(document.getElementById("frm_adjunto"));
-		formData.append("controlador", "adjuntoajax");
-		formData.append("accion", "adjuntar");
-		$.ajax({
-			url: "index.php",
-			type: "post",
-			dataType: "html",
-			data: formData,
-			cache: false,
-			contentType: false,
-			processData: false
-		}).done(function(res){
-			$("#div_adjunta_cont").html(res);
-			$('#mdl_adjuntar').modal('hide');
-			//Se vuelve a generar el evento, debido a que se pierde
-			$("#btn_borrar_adj").on("click", function(){
-				adjunto_borrar();
-			});
-		});
-		 
-		 
-	}
-	function adjunto_borrar(){
-		
-		var v_prod_geo_adjunto_id = $("input[name='prod_geo_adjunto_id']").val();
-		console.log("v_prod_geo_adjunto_id: "+v_prod_geo_adjunto_id);
-		$.ajax({
-			url: "index.php?controlador=adjuntoajax&accion=borrar&adjunto_id="+v_prod_geo_adjunto_id,
-			type: "post",
-			dataType: "html",
-			cache: false,
-			contentType: false,
-			processData: false
-		}).done(function(res){
-			$("#div_adjunta_cont").html(res);
-		});
-	}
+	
 	return {
 		activar:function(){
 			bsCustomFileInput.init();
 			modal_es_nuevo();
-			de_prod_sector_3_y_4();
-			$("input[name='prod_sector3'], input[name='prod_sector4']").on('click', function(){
-				de_prod_sector_3_y_4();
-			});
-			//2. Clave de identificación del productor
-			de_prod_tipo($("select[name='prod_tipo']"));
-			$("select[name='prod_tipo']").on("change", function(){
-				de_prod_tipo($(this));
-			});
+			
 			//3. Ubicación de la unidad de producción
 			$("select[name='prod_edo']").on("change", function(){
 				de_prod_edo($(this));
@@ -117,12 +67,10 @@ var Modulo = function(){
 			$("select[name='prod_mpo']").on("change", function(){
 				de_prod_mpo($(this));
 			});
-			$("#frm_adjunto").on("submit", function(e){
-				adjuntar(e);
+			de_maiz_tot_variedades();
+			$("select[name='maiz_tot_variedades']").on("change", function(){
+				de_maiz_tot_variedades();
 			});
-			$("#btn_borrar_adj").on("click", function(){
-				adjunto_borrar();
-			})
 		}
 	};
 }();
