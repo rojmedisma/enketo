@@ -22,8 +22,10 @@
 					<div class="container">
 						<?php
 						switch (strtolower($controlador_obj->getControlador())){
-							case 'mostrador': include_once 'modulos/Mostrador/Inicio.php';	break;
-							case 'cuestforma':	include_once 'modulos/Mostrador/Cuest/Forma.php';	break;
+							case 'mostrador':		include_once 'modulos/Mostrador/Inicio.php';		break;
+							case 'cuestforma':		include_once 'modulos/Mostrador/Cuest/Forma.php';	break;
+							case 'cultivo':			include_once 'modulos/Mostrador/Cultivo/Forma.php';	break;
+							case 'catvistagen':		include_once 'modulos/Mostrador/CatVistaGen.php';	break;
 						}
 						?>
 					</div>
@@ -48,8 +50,9 @@
 		<?php 
 		include_once 'modulos/Scripts.php';
 		switch (strtolower($controlador_obj->getControlador())){
-			case 'cuestvista':	include_once 'modulos/ScriptCuestVista.php';	break;
-			case 'cuestforma':	echo $controlador_obj->getHTMLScriptCuest();	break;
+			case 'cuestvista':	include_once 'modulos/ScriptCuestVista.php';			break;
+			case 'cuestforma':	echo $controlador_obj->getHTMLScriptCuest();			break;
+			case 'cultivo':		include_once 'modulos/Mostrador/ScriptCultivos.php';	break;
 		}
 		?>
 	</body>

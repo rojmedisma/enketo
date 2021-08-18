@@ -7,7 +7,11 @@
 	<div class="card-body">
 		<form name="frm_cuest" role="form" method="post" action="<?php echo define_controlador('cuestforma', 'actualizar'); ?>">
 			<?php echo $controlador_obj->getHTMLCamposOcultosCuest(); ?>
-			<?php echo $controlador_obj->getHTMLBotonesMenu(); ?>
+			<div class="row">
+				<div class="col-md-12">
+					<?php echo $controlador_obj->getHTMLBotonesMenu(); ?>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-md-4">
 					<label>Cuestionario Id:</label><spam class="pl-2"><?php echo $controlador_obj->getCuestionarioId(); ?></spam>
@@ -18,7 +22,11 @@
 			</div>
 			<?php echo $controlador_obj->getHTMLValidacionesLista(); ?>
 			<?php include_once $controlador_obj->getSubRutaVista(); ?>
-			<?php echo $controlador_obj->getHTMLBotonesMenu(); ?>
+			<div class="row">
+				<div class="col-md-12">
+					<?php echo $controlador_obj->getHTMLBotonesMenu(); ?>
+				</div>
+			</div>
 		</form>
 	</div>
 </div>

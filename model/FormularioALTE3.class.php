@@ -172,6 +172,19 @@ class FormularioALTE3{
 		return $this->getCmpTexto($cmp_id_nom, $arr_atrib_usu);
 	}
 	/**
+	 * Devuelve el elemento HTML para un campo de tipo fecha
+	 * @param string $cmp_id_nom	Nombre/Id del campo
+	 * @param string $lbl_txt	Título del campo
+	 * @param array $arr_atrib_usu	Arreglo de atributos de configuración para el campo
+	 * @return string
+	 */
+	public function cmpFecha(string $cmp_id_nom, string $lbl_txt="", array $arr_atrib_usu=array()): string{
+		$arr_atrib_usu['cmp_id_nom'] = $cmp_id_nom;
+		$arr_atrib_usu['lbl_txt'] = $lbl_txt;
+		$arr_atrib_usu['cmp_tipo'] = "date";
+		return $this->getCmpTexto($cmp_id_nom, $arr_atrib_usu);
+	}
+	/**
 	 * Devuelve el elemento HTML para un campo de tipo lectura
 	 * @param string $cmp_id_nom	Nombre/Id del campo
 	 * @param string $lbl_txt	Título del campo
@@ -899,6 +912,14 @@ class FormularioALTE3{
 				'ver_nombre_campo'=>$ver_nombre_campo,
 				'class'=>'form-control',
 				'type'=>'password',
+				'div_group_class'=>'form-group',
+			),
+			'date'=>array(
+				'lectura'=>$lectura,
+				'usar_div_agrupar'=>$usar_div_agrupar,
+				'ver_nombre_campo'=>$ver_nombre_campo,
+				'class'=>'form-control',
+				'type'=>'date',
 				'div_group_class'=>'form-group',
 			),
 			'lectura'=>array(

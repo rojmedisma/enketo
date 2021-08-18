@@ -58,6 +58,10 @@ class Distintivos{
 					"titulo_pagina"=>"Consulta inventario",
 					"arr_pag_ant"=>array()
 				),
+				"cultivo"=>array(
+					"titulo_pagina"=>"Maíz - Variedades",
+					"arr_pag_ant"=>array()
+				),
 			),
 			"catfrmgen"=>array(
 				"cat_usuario"=>array(
@@ -93,6 +97,20 @@ class Distintivos{
 			"inventariofrm"=>array(
 				"inicio"=>array(
 					"titulo_pagina"=>"Inventario",
+					"arr_pag_ant"=>array()
+				),
+			),
+			"cultivo" =>array(
+				"inicio"=>array(
+					"titulo_pagina"=>"Variedad de cultivo",
+					"arr_pag_ant"=>array()
+				),
+				"inventario"=>array(
+					"titulo_pagina"=>"Inventario",
+					"arr_pag_ant"=>array()
+				),
+				"fotos"=>array(
+					"titulo_pagina"=>"Fotos",
 					"arr_pag_ant"=>array()
 				),
 			)

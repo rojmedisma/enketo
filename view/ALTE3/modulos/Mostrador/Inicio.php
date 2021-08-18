@@ -7,10 +7,12 @@
 			</div>
 			<div class="card-body">
 				<div class="row">
+					
 					<div class="col-lg-12">
-						<h4>Cuestionario para productores</h4>
-						<a class="btn btn-primary" href="<?php echo define_controlador('cuestforma', 'inicio', false, array('cat_cuestionario_id'=>1)) ?>"> Nuevo cuestionario</a>
+						<h4>Cultivo Maíz</h4>
+						<a class="btn btn-primary" href="<?php echo define_controlador('catvistagen', 'cultivo') ?>"> Consultar</a>
 					</div>
+					
 					<div class="col-lg-12">
 						<h4>Más opciones</h4>
 						<a class="btn btn-primary" href="<?php echo define_controlador('tablero', 'inicio', false) ?>"> Tablero</a>

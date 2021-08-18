@@ -27,9 +27,14 @@
 <script src="/library/AdminLTE_3/plugins/select2/js/select2.full.min.js"></script>
 <!-- jQuery Numeric -->
 <script src="/library/AdminLTE/plugins/jQuery/jquery.numeric.min.js"></script>
+
 <!-- date-range-picker -->
 <script src="/library/AdminLTE_3/plugins/daterangepicker/daterangepicker.js"></script>
+
 <?php }?>
+
+<!-- Bootstrap Switch -->
+<script src="/library/AdminLTE_3/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/library/AdminLTE_3/dist/js/adminlte.min.js"></script>
 <!-- Principal -->
