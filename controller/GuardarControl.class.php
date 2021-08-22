@@ -111,4 +111,64 @@ class GuardarControl extends ControladorBase{
 		$log->setRegLog('inventario_id', $inventario_id, 'Guardar', 'Aviso', 'Se guardó registro de Inventario');
 		redireccionar($this->controlador_destino, $this->accion_destino, array('inventario_id'=>$inventario_id));
 	}
+	public function cultivo() {
+		$cultivo_id = (isset($_REQUEST['cultivo_id']))? intval($_REQUEST['cultivo_id']) : 0;
+		if(!$this->tienePermiso('ae-cultivo')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Guardar cultivo'));
+		}
+		$cultivo = new Cultivo();
+		$arr_cmps_cu = $cultivo->getArrCmpsTbl();
+		$arr_cmps = array();
+		foreach($arr_cmps_cu as $arr_cmps_cu_det){
+			$cmp_nom = $arr_cmps_cu_det['Field'];
+			switch($cmp_nom){
+				case 'cultivo_id':
+				case 'borrar':
+					break;
+				default:
+					$arr_cmps[$cmp_nom] = (isset($_REQUEST[$cmp_nom]))? txt_sql($_REQUEST[$cmp_nom]) : txt_sql("");
+					break;
+			}
+		}
+		$cultivo->setGuardarReg($arr_cmps, $cultivo_id);
+		$cultivo_id = $cultivo->getCmpIdVal();
+		if($cultivo->getEsError()){
+			$this->redireccionaErrorDeArr($cultivo->getArr1erError());
+		}
+		$log = new Log();
+		$log->setRegLog('cultivo_id', $cultivo_id, 'Guardar', 'Aviso', 'Se guardó registro de Cultivo');
+		redireccionar($this->controlador_destino, $this->accion_destino, array('cultivo_id'=>$cultivo_id));
+	}
+	public function cult_inventario() {
+		$cultivo_id = (isset($_REQUEST['cultivo_id']))? intval($_REQUEST['cultivo_id']) : 0;
+		$cult_inventario_id = (isset($_REQUEST['cult_inventario_id']))? intval($_REQUEST['cult_inventario_id']) : 0;
+		if(!$cultivo_id){
+			$this->redireccionaError('Sin argumento cultivo_id', 'El argumento cultivo_id es necesario para permitir guardar este formulario');
+		}
+		if(!$this->tienePermiso('ae-cultivo')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Guardar cultivo'));
+		}
+		$cult_inventario = new CultInventario();
+		$arr_cmps_cu = $cult_inventario->getArrCmpsTbl();
+		$arr_cmps = array();
+		foreach($arr_cmps_cu as $arr_cmps_cu_det){
+			$cmp_nom = $arr_cmps_cu_det['Field'];
+			switch($cmp_nom){
+				case 'cult_inventario_id':
+				case 'borrar':
+					break;
+				default:
+					$arr_cmps[$cmp_nom] = (isset($_REQUEST[$cmp_nom]))? txt_sql($_REQUEST[$cmp_nom]) : txt_sql("");
+					break;
+			}
+		}
+		$cult_inventario->setGuardarReg($arr_cmps, $cult_inventario_id);
+		$cult_inventario_id = $cult_inventario->getCmpIdVal();
+		if($cult_inventario->getEsError()){
+			$this->redireccionaErrorDeArr($cult_inventario->getArr1erError());
+		}
+		$log = new Log();
+		$log->setRegLog('cult_inventario_id', $cult_inventario_id, 'Guardar', 'Aviso', 'Se guardó registro de Inventario cultivo');
+		redireccionar($this->controlador_destino, $this->accion_destino, array('cultivo_id'=>$cultivo_id));
+	}
 }

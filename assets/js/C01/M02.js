@@ -4,7 +4,7 @@
  * @type 
  */
 var Modulo = function(){
-	var v_rp3 = 16, v_rp7=10;
+	var v_rp3 = 4, v_rp7=5;
 	function para_agr_p1(){
 		on_change_chk_sel_mostrar_sub("agr_p1r1", "#div_an_agr_p1rN");
 		on_change_chk_sel_mostrar_sub("agr_p1r1_1", "#div_an_agr_p1r1_N");
@@ -17,7 +17,6 @@ var Modulo = function(){
 		on_change_chk_sel_mostrar_sub("agr_p1r2_2", "#div_an_agr_p1r2_N");
 		on_change_chk_sel_mostrar_sub("agr_p1r2_3", "#div_an_agr_p1r2_N");
 	}
-	
 	function para_agr_p3(){
 		para_agr_p3rN_cultivo();
 		mostrar_en_p7();
@@ -57,7 +56,7 @@ var Modulo = function(){
 	function para_agr_p5rN_tipo(){
 		var a_agr_p5rN = [];
 		var x = 0;
-		for (var i = 1; i <= 9; i++) {
+		for (var i = 1; i <= 5; i++) {
 			a_agr_p5rN[x++] = '#fg_agr_p5r'+i+'_tipo';
 			a_agr_p5rN[x++] = '#fg_agr_p5r'+i+'_cantidad';
 			a_agr_p5rN[x++] = '#fg_agr_p5r'+i+'_sup';
@@ -65,18 +64,12 @@ var Modulo = function(){
 		//Se debe de llamar primero esta función antes, de lo contrario el resto de código deja de funcionar
 		on_change_chk_sel_bloquear('agr_p5r10_tipo', a_agr_p5rN);
 		
-		for (var i = 1; i <= 9; i++) {
+		for (var i = 1; i <= 5; i++) {
 			on_change_chk_sel_desbloquear("agr_p5r"+i+"_tipo", ['#div_agr_p5r'+i+'_cantidad','#div_agr_p5r'+i+'_sup'], true, false, "#div_an_agr_p5");
 		}
 		on_change_chk_sel_desbloquear("agr_p5r10_tipo", [], true, false, "#div_an_agr_p5");
 	}
-	function para_agr_p6(){
-		for (var i = 1; i <= 13; i++) {
-			on_change_chk_sel_desbloquear("agr_p6r"+i, [], true, false, "#div_an_agr_p6");
-		}
-		on_change_chk_sel_mostrar("agr_p6r13", ["#fg_agr_p6r13_esp"]);	//Para quitar la alerta únicamente
-		//mostrarSecciones($("input[name='agr_p6r13']").is(':checked'), ["#fg_agr_p6r13_esp"]);
-	}
+	
 	function para_agr_p7(){
 		for (var i = 1; i <= v_rp3; i++) {
 			var a_cmps_suma = [];
@@ -97,33 +90,7 @@ var Modulo = function(){
 		on_change_chk_sel_bloquear('agr_p8r15_m_ap_nose', ['#fg_agr_p8r15_m_ap_frec']);
 		
 	}
-	function agr_p8_sel(o_cmp_sel){
-		var v_valor = parseInt(o_cmp_sel.val());
-		var v_no = (v_valor===1);
-		var v_si = (v_valor===2);
-		mostrarSecciones(v_no, ['#div_agr_p8_no']);
-		mostrarSecciones(v_si, ['#div_agr_p8_aplico_sub']);
-		
-		for (var i = 1; i <= 15; i++) {
-			on_change_chk_sel_desbloquear('agr_p8r'+i+'_t_ferti', ['#fg_agr_p8r'+i+'_sup','#fg_agr_p8r'+i+'_cant', '#fg_agr_p8r'+i+'_f_ap', '#fg_agr_p8r'+i+'_m_ap'], true, false, "#div_an_agr_p8");
-		}
-		on_change_chk_sel_mostrar('agr_p8r15_t_ferti', ['#div_agr_p8r15_t_ferti_sub']);
-	}
 	
-	function para_agr_p9(){
-		agr_p9_sel($("select[name='agr_p9_aplico']"));
-		$("select[name='agr_p9_aplico']").on('change', function(){
-			agr_p9_sel($(this));
-		});
-	}
-	function agr_p9_sel(o_cmp_sel){
-		var v_mostrar = (parseInt(o_cmp_sel.val())!==2)? false : true;
-		mostrarSecciones(v_mostrar, ['#div_agr_p9_aplico_sub'], true, true);
-		
-		on_change_chk_sel_desbloquear('agr_p9r1_t_cal', ['#fg_agr_p9r1_cant', '#fg_agr_p9r1_sup'], true, false, "#div_an_agr_p9");
-		on_change_chk_sel_desbloquear('agr_p9r2_t_cal', ['#fg_agr_p9r2_cant', '#fg_agr_p9r2_sup'], true, false, "#div_an_agr_p9");
-		on_change_chk_sel_desbloquear('agr_p9r3_t_cal', ['#fg_agr_p9r3_cant', '#fg_agr_p9r3_sup'], true, false, "#div_an_agr_p9");
-	}
 	function para_agr_p10(){
 		agr_p10_sel($("select[name='agr_p10_aplico']"));
 		$("select[name='agr_p10_aplico']").on('change', function(){
@@ -143,10 +110,7 @@ var Modulo = function(){
 			para_agr_p1();
 			para_agr_p3();
 			para_agr_p5rN_tipo();
-			para_agr_p6();
 			para_agr_p7();
-			para_agr_p8();
-			para_agr_p9();
 			para_agr_p10();
 		}
 	};

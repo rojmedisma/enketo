@@ -12,6 +12,34 @@ class CatvistagenControl extends TableroBase{
 		$this->setUsarLibVista(true);
 		$this->defineVista("Tablero.php");
 	}
+	/**
+	 * Para plataforma granero
+	 */
+	public function cultivo() {
+		$arr_reg_usuario = $this->getArrRegUsuario();
+		$cat_usuario_id = intval(valorEnArreglo($arr_reg_usuario, 'cat_usuario_id'));
+		if(!$cat_usuario_id){
+			$this->redireccionaError('Identidicador de usuario: cat_usuario_id vacío', 'No se pudo identificar el valor de la variable cat_usuario_id, el cual es necesario para el filtrado de la información en la vista');
+		}
+		
+		$this->defineVista("Mostrador.php");
+		$this->arr_param = array(
+			'permiso_borrar'=>'borrar-cult',
+			'permiso_edicion'=>'ae-cultivo',
+			'cmp_id_nom'=>'cultivo_id',
+			'controlador_frm'=>'cultivo',
+			'accion_frm'=>'inicio',
+			'catalogo'=>'cultivo',
+			'arr_url_arg'=>array('cat_usuario_id'=>$cat_usuario_id),
+		);
+		$this->setArrDatoVistaValor('tit_tabla', 'Variedad de cultivos');
+		$cultivo = new Cultivo();
+		$cultivo->setArrTbl(" AND `cat_usuario_id` = '".$cat_usuario_id."' ");
+		$this->arr_tabla = $cultivo->getArrTbl();
+	}
+	/**
+	 * Para plataforma wallawalla_adm
+	 */
 	public function inventario() {
 		$this->arr_param = array(
 			'permiso_borrar'=>'borrar-invent',
@@ -105,7 +133,7 @@ class CatvistagenControl extends TableroBase{
 	 */
 	public function getHTMLBtnAlta() {
 		if($this->tienePermiso($this->getParametro('permiso_edicion'))){
-			return '<a href="'.define_controlador($this->getParametro('controlador_frm'), $this->getParametro('accion_frm')).'" class="btn btn-info btn-sm"><i class="fa fa-fw fa-file"></i> Alta registro</a>';
+			return '<a href="'.define_controlador($this->getParametro('controlador_frm'), $this->getParametro('accion_frm'), false, $this->getParametro('arr_url_arg')).'" class="btn btn-info btn-sm"><i class="fa fa-fw fa-file"></i> Alta registro</a>';
 		}else{
 			return '';
 		}

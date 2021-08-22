@@ -1,114 +1,10 @@
-<h4>SECCIÓN II. Caracterización de las prácticas productivas</h4>
-<h4 class="text-success">Sector ganadería</h4>
-<?php echo $controlador_obj->getHTMLInfoLink('info_sec_2_cpp', 'Acerca de', 'Para cada uno de los sectores aplicables a su caso, a continuación, se le pide responder sobre las características de su unidad de producción. Las respuestas se utilizarán para estimar el nivel de emisiones de gases que contribuyen al cambio climático con fines de diagnóstico. Se le pide que responda con la verdad.'); ?>
-<h5 class="text-info">Caracterización – actividad pecuaria</h5>
+<h4>Sección B</h4>
+<h4 class="text-success">Sección con preguntas más extensas y complejas</h4>
+<?php echo $controlador_obj->getHTMLInfoLink('info_sec_2_cpp', 'Acerca de', 'En esta sección podrán ver más ejemplos de preguntas. La funcionalidad es muy similar a la descrita y explicada en las secciones  Principal y Sección A. La principal diferencia es que se hace con opciones de pregunta más extensas y complejas'); ?>
+<h5 class="text-info">Aquí los ejemplos con otras variantes de preguntas</h5>
 <div class="row pl-3">
 	<div class="col-md-12">
-		<label>1. Por favor marque qué tipo de ganadería realiza y en qué superficie</label>
-		<div class="row pl-3">
-			<div class="col-md-12">
-				<label>Tipo de ganadería</label>
-			</div>
-			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p1r1', 'Producción de traspatio');?>
-				<div class="row pl-3" id="div_pec_p1r1_sub">
-					<div class="col-md-2">
-						<?php echo $controlador_obj->frm_al3->cmpNum('pec_p1r1_sup', 2, 'Superficie (hectáreas)');?>
-					</div>
-					<div class="col-md-4">
-						<?php echo $controlador_obj->frm_al3->cmpSelectDeSubCat('pec_p1r1_tp', 'pec_p1', 'Tenencia de su propiedad:');?>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p1r2', 'Producción comercial');?>
-				<div class="row pl-3" id="div_pec_p1r2_sub">
-					<div class="col-md-12">
-						<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p1r2_1', 'Extensiva (los animales pastorean)');?>
-						<div class="row pl-3" id="div_pec_p1r2_1_sub">
-							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p1r2_1_1', 'Producción de animales de 1ra etapa de crecimiento');?>
-								<div class="row pl-3" id="div_pec_p1r2_1_1_sub">
-									<div class="col-md-2">
-										<?php echo $controlador_obj->frm_al3->cmpNum('pec_p1r2_1_1_sup', 2, 'Superficie (hectáreas)');?>
-									</div>
-									<div class="col-md-4">
-										<?php echo $controlador_obj->frm_al3->cmpSelectDeSubCat('pec_p1r2_1_1_tp', 'pec_p1', 'Tenencia de su propiedad:');?>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p1r2_1_2', 'Producción de carne o leche (todo el ciclo)');?>
-								<div class="row pl-3" id="div_pec_p1r2_1_2_sub">
-									<div class="col-md-2">
-										<?php echo $controlador_obj->frm_al3->cmpNum('pec_p1r2_1_2_sup', 2, 'Superficie (hectáreas)');?>
-									</div>
-									<div class="col-md-4">
-										<?php echo $controlador_obj->frm_al3->cmpSelectDeSubCat('pec_p1r2_1_2_tp', 'pec_p1', 'Tenencia de su propiedad:');?>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->validacionSinCmp('div_an_pec_p1r2_1_N'); ?>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p1r2_2', 'Intensivo (estabulado)');?>
-						<div class="row pl-3" id="div_pec_p1r2_2_sub">
-							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p1r2_2_1', 'Producción de carne');?>
-								<div class="row pl-3" id="div_pec_p1r2_2_1_sub">
-									<div class="col-md-2">
-										<?php echo $controlador_obj->frm_al3->cmpNum('pec_p1r2_2_1_sup', 2, 'Superficie (hectáreas)');?>
-									</div>
-									<div class="col-md-4">
-										<?php echo $controlador_obj->frm_al3->cmpSelectDeSubCat('pec_p1r2_2_1_tp', 'pec_p1', 'Tenencia de su propiedad:');?>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p1r2_2_2', 'Producción de leche');?>
-								<div class="row pl-3" id="div_pec_p1r2_2_2_sub">
-									<div class="col-md-2">
-										<?php echo $controlador_obj->frm_al3->cmpNum('pec_p1r2_2_2_sup', 2, 'Superficie (hectáreas)');?>
-									</div>
-									<div class="col-md-4">
-										<?php echo $controlador_obj->frm_al3->cmpSelectDeSubCat('pec_p1r2_2_2_tp', 'pec_p1', 'Tenencia de su propiedad:');?>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->validacionSinCmp('div_an_pec_p1r2_2_N'); ?>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<?php echo $controlador_obj->frm_al3->validacionSinCmp('div_an_pec_p1r2_N'); ?>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p1r3', 'Producción de sistemas silvopastoriles o agrosilvopastoriles (comercial o de traspatio)');?>
-				<div class="row pl-3" id="div_pec_p1r3_sub">
-					<div class="col-md-2">
-						<?php echo $controlador_obj->frm_al3->cmpNum('pec_p1r3_sup', 2, 'Superficie (hectáreas)');?>
-					</div>
-					<div class="col-md-4">
-						<?php echo $controlador_obj->frm_al3->cmpSelectDeSubCat('pec_p1r3_tp', 'pec_p1', 'Tenencia de su propiedad:');?>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->validacionSinCmp('div_an_pec_p1rN'); ?>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="row pl-3">
-	<div class="col-md-12">
-		<label>2. Por favor seleccione las especies que produce y diga el número de cabezas promedio que mantiene durante el año, su peso promedio y cómo considera que es su productividad.</label>
-		<span class="small">Marque todas las especies y todas las opciones al interior de la composición del hato que apliquen.</span>
+		<label>1. Habilitación de sub-secciones.</label>
 		<?php for($i=1; $i<=6; $i++){?>
 		<div class="row pl-3">
 			<div class="col-md-12">
@@ -116,21 +12,21 @@
 				<div id="<?php echo 'div_pec_p2r'.$i.'_especie_sub'; ?>">
 					<div class="row pl-3">
 						<div class="col-md-7">
-							<label>Composición del hato</label>
+							<label>Para la especie 1</label>
 							<div class="row">
 								<div class="col-md-8">
-									<label>Producto</label>
+									<label>Productos</label>
 								</div>
 								<div class="col-md-4">
-									<label>Cabezas</label>
+									<label>Col 1. numérica</label>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-2">
-							<label>Peso promedio (kilogramos/cabeza)</label>
+							<label>Col 2. numérica</label>
 						</div>
 						<div class="col-md-3">
-							<label>Productividad de la especie (para carne, en canal)</label>
+							<label>Opciones</label>
 							<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_info" data-txt_tit="Productividad" data-id_info="#div_info_pec_p2"><i class="fas fa-info"></i></button>
 						</div>
 					</div>
@@ -211,23 +107,21 @@
 		<?php echo $controlador_obj->frm_al3->validacionSinCmp('div_an_pec_p2'); ?>
 	</div>
 </div>
-<h5 class="text-info">Energía en actividades pecuarias</h5>
 <div class="row pl-3">
 	<div class="col-md-12">
-		<label>3. Por favor marque qué tipos de energía usa para la producción ganadera. En cada caso indique qué cantidad durante del año y en qué superficie de su unidad de producción.</label>
-		<p class="small">Marque todas las opciones que apliquen.</p>
+		<label>2. Habilitación de renglones</label>
 		<div class="row pl-3">
 			<div class="col-md-4">
-				<label>Tipo de energía</label>
+				<label>Aplica renglón</label>
 			</div>
 			<div class="col-md-1">
-				<label>Unidades</label>
+				<label>Cantidad</label>
 			</div>
 			<div class="col-md-2">
 				<label>Unidad de medida</label>
 			</div>
 			<div class="col-md-1">
-				<label>Superficie donde se usa</label>
+				<label>Cantidad</label>
 			</div>
 			<div class="col-md-2">
 				<label>Unidad de medida</label>

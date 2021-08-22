@@ -21,3 +21,13 @@ Proyecto de encuestas a la medida
 - Archivo vista **FooterDesarrollador.php**. Despliege de los arreglos arr_param y arr_permisos.
 - Clase core **ModeloBase**. Se modificó el método **setGuardarReg** para meter la bandera **solo_actualizar**
 - Clase core **Ayuda**. Se corrigió el evento **getUsuarioId** con la variable de sesión correcta.
+
+## Versión 0.0.1.16
+
+> Cambios en el 
+
+- Cuestionario C01. Ajustes a partir del **Cuestionario para productores** para crear una versión que muestre la funcionalidad del cuestionario
+
+> Cambios en la plataforma
+
+- Clase modelo **FormularioALTE3**. Nuevo campo para fechas **cmpFecha**

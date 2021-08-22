@@ -3,17 +3,6 @@
  * @type 
  */
 var Modulo = function(){
-	function para_pec_p1(){
-		on_change_chk_sel_mostrar_sub("pec_p1r1", "#div_an_pec_p1rN");
-		on_change_chk_sel_mostrar_sub("pec_p1r2", "#div_an_pec_p1rN");
-		on_change_chk_sel_mostrar_sub("pec_p1r2_1", "#div_an_pec_p1r2_N");
-		on_change_chk_sel_mostrar_sub("pec_p1r2_1_1", "#div_an_pec_p1r2_1_N");
-		on_change_chk_sel_mostrar_sub("pec_p1r2_1_2", "#div_an_pec_p1r2_1_N");
-		on_change_chk_sel_mostrar_sub("pec_p1r2_2", "#div_an_pec_p1r2_N");
-		on_change_chk_sel_mostrar_sub("pec_p1r2_2_1", "#div_an_pec_p1r2_2_N");
-		on_change_chk_sel_mostrar_sub("pec_p1r2_2_2", "#div_an_pec_p1r2_2_N");
-		on_change_chk_sel_mostrar_sub("pec_p1r3", "#div_an_pec_p1rN");
-	}
 	function para_pec_p2(){
 		pec_p2rN_especie_sel();
 		
@@ -310,7 +299,6 @@ var Modulo = function(){
 	}
 	return {
 		activar:function(){
-			para_pec_p1();
 			para_pec_p2();
 			para_pec_p3();
 			para_pec_p4();

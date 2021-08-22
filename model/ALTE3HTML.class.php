@@ -172,7 +172,7 @@ class ALTE3HTML{
 			$arr_tag[] = '</div>';
 		}else{
 			$arr_tag[] = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#mdl_adjuntar">Adjuntar archivo...</button>';
-			$arr_tag[] = '<p class="small">En caso de ser varios archivos, favor de hacer un archivo comprimido con todos ellos.</p>';
+			$arr_tag[] = '<p class="small">Por cuestiones de seguridad, sólo se permite adjuntar un archivo de tipo texto o imagen que no supere los 2 Mb.</p>';
 		}
 		$this->html_contenido = tag_string($arr_tag);
 	}

@@ -78,7 +78,7 @@ class ValidaC01 extends ModeloValidaBase{
 			//	*	*	Temporal
 			if($this->es_chk_sel('agr_p1r1_1')){
 				$arr_reglas_val['agr_p1r1_1_has'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
-				$arr_reglas_val['agr_p2r1_1'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
+				$arr_reglas_val['agr_p2r1_1'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
 			}
 			//	*	*	Riego
 			if($this->es_chk_sel('agr_p1r1_2')){
@@ -92,17 +92,17 @@ class ValidaC01 extends ModeloValidaBase{
 				//	*	*	Por gravedad
 				if($this->es_chk_sel('agr_p1r1_2_1')){
 					$arr_reglas_val['agr_p1r1_2_1_has'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
-					$arr_reglas_val['agr_p2r1_2_1'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
+					$arr_reglas_val['agr_p2r1_2_1'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
 				}
 				//	*	*	 Superficial
 				if($this->es_chk_sel('agr_p1r1_2_2')){
 					$arr_reglas_val['agr_p1r1_2_2_has'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
-					$arr_reglas_val['agr_p2r1_2_2'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
+					$arr_reglas_val['agr_p2r1_2_2'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
 				}
 				//	*	*	Presurizado
 				if($this->es_chk_sel('agr_p1r1_2_3')){
 					$arr_reglas_val['agr_p1r1_2_3_has'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
-					$arr_reglas_val['agr_p2r1_2_3'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
+					$arr_reglas_val['agr_p2r1_2_3'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
 				}
 			}
 		}
@@ -118,17 +118,17 @@ class ValidaC01 extends ModeloValidaBase{
 			//	*	*	Con invernadero
 			if($this->es_chk_sel('agr_p1r2_1')){
 				$arr_reglas_val['agr_p1r2_1_has'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
-				$arr_reglas_val['agr_p2r2_1'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
+				$arr_reglas_val['agr_p2r2_1'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
 			}
 			//	*	*	Con micro y macro túneles
 			if($this->es_chk_sel('agr_p1r2_2')){
 				$arr_reglas_val['agr_p1r2_2_has'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
-				$arr_reglas_val['agr_p2r2_2'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
+				$arr_reglas_val['agr_p2r2_2'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
 			}
 			//	*	*	Con casas malla sombra
 			if($this->es_chk_sel('agr_p1r2_3')){
 				$arr_reglas_val['agr_p1r2_3_has'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
-				$arr_reglas_val['agr_p2r2_3'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
+				$arr_reglas_val['agr_p2r2_3'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 1');
 			}
 		}
 		//	*	Pregunta 3
@@ -154,7 +154,6 @@ class ValidaC01 extends ModeloValidaBase{
 		if($this->es_chk_sel('agr_p3r'.$r_p3.'_cultivo')){
 			$arr_reglas_val['agr_p3r'.$r_p3.'_cultivo_esp'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 3');
 		}
-		//	*	Pregunta 4
 		
 		
 		//	*	Pregunta 5
@@ -162,8 +161,8 @@ class ValidaC01 extends ModeloValidaBase{
 		for($i=1; $i<=9; $i++){
 			$arr_an_agr_p5[] = 'agr_p5r'.$i.'_tipo';
 			if($this->es_chk_sel('agr_p5r'.$i.'_tipo')){
-				$arr_reglas_val['agr_p5r'.$i.'_cantidad'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 5');
-				$arr_reglas_val['agr_p5r'.$i.'_sup'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 5');
+				$arr_reglas_val['agr_p5r'.$i.'_cantidad'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
+				$arr_reglas_val['agr_p5r'.$i.'_sup'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
 			}
 		}
 		$arr_an_agr_p5[] = 'agr_p5r9_tipo';
@@ -172,25 +171,9 @@ class ValidaC01 extends ModeloValidaBase{
 			'regla'=>'al_menos_n_chk', 
 			'arr_cmp_nom'=>$arr_an_agr_p5,
 			'val_n'=>1,
-			'tit_preg'=>'Pregunta 5'
+			'tit_preg'=>'Pregunta 2'
 		);
 		
-		
-		//	*	Pregunta 6
-		$arr_an_agr_p6 = array();
-		for($i=1; $i<=13; $i++){
-			$arr_an_agr_p6[] = 'agr_p6r'.$i;
-		}
-		$arr_reglas_val['div_an_agr_p6'] = array(
-			'no_es_campo'=>true,
-			'regla'=>'al_menos_n_chk', 
-			'arr_cmp_nom'=>$arr_an_agr_p6,
-			'val_n'=>1,
-			'tit_preg'=>'Pregunta 6'
-		);
-		if($this->es_chk_sel('agr_p6r13')){
-			$arr_reglas_val['agr_p6r13_esp'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 6');
-		}
 		//	*	Pregunta 7
 		$r_p7 = 10;
 		for($i=1; $i<=$r_p3; $i++){
@@ -200,7 +183,7 @@ class ValidaC01 extends ModeloValidaBase{
 				for($j=1; $j<=$r_p7; $j++){
 					$arr_an_agr_p7_pago[] = 'agr_p7r'.$i.'_'.$j.'_pago';
 					if($this->es_chk_sel('agr_p7r'.$i.'_'.$j.'_pago')){
-						$arr_reglas_val['agr_p7r'.$i.'_'.$j.'_prop'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 7');
+						$arr_reglas_val['agr_p7r'.$i.'_'.$j.'_prop'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 4');
 					}
 				}
 				$arr_reglas_val['div_an_agr_p7r'.$i] = array(
@@ -208,7 +191,7 @@ class ValidaC01 extends ModeloValidaBase{
 					'regla'=>'al_menos_n_chk', 
 					'arr_cmp_nom'=>$arr_an_agr_p7_pago,
 					'val_n'=>1,
-					'tit_preg'=>'Pregunta 7'
+					'tit_preg'=>'Pregunta 4'
 				);
 				$arr_reglas_val['div_an_agr_p7r'.$i.'_tot'] = array(
 					'regla'=>'val_es_igual',
@@ -216,77 +199,27 @@ class ValidaC01 extends ModeloValidaBase{
 					'val_compara'=>100,
 					'no_es_campo'=>true,
 					'txt_alerta'=>'Valor total debe ser igual a 100%',
-					'tit_preg'=>'Pregunta 7'
+					'tit_preg'=>'Pregunta 4'
 				);
 				if($this->es_chk_sel('agr_p7r'.$i.'_10_pago')){
-					$arr_reglas_val['agr_p7r'.$i.'_10_pago_esp'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 7');
+					$arr_reglas_val['agr_p7r'.$i.'_10_pago_esp'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 4');
 				}
 			}
 		}
-		//	*	Pregunta 8
-		$arr_reglas_val['agr_p8_aplico'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 8');
-		$agr_p8_aplico = intval($this->getCmpVal('agr_p8_aplico'));
-		if($agr_p8_aplico==1){
-				$arr_reglas_val['agr_p8_causa'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 8');
-		}elseif($agr_p8_aplico==2){
-			$arr_an_agr_p8 = array();
-			for($i=1; $i<=15; $i++){
-				$arr_an_agr_p8[] = 'agr_p8r'.$i.'_t_ferti';
-				if($this->es_chk_sel('agr_p8r'.$i.'_t_ferti')){
-					$arr_reglas_val['agr_p8r'.$i.'_sup'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 8');
-					$arr_reglas_val['agr_p8r'.$i.'_cant'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 8');
-					$arr_reglas_val['agr_p8r'.$i.'_f_ap'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 8');
-					$arr_reglas_val['agr_p8r'.$i.'_m_ap'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 8');
-				}
-			}
-			if($this->es_chk_sel('agr_p8r15_t_ferti')){
-				$arr_reglas_val['agr_p8r15_m_ap_esp'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 8');
-				if(!$this->es_chk_sel('agr_p8r15_m_ap_nose')){
-					$arr_reglas_val['agr_p8r15_m_ap_frec'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 8');
-				}
-				
-			}
-			
-			$arr_reglas_val['div_an_agr_p8'] = array(
-				'no_es_campo'=>true,
-				'regla'=>'al_menos_n_chk', 
-				'arr_cmp_nom'=>$arr_an_agr_p8,
-				'val_n'=>1,
-				'tit_preg'=>'Pregunta 8'
-			);
-		}
-		//	*	Pregunta 9
-		$arr_reglas_val['agr_p9_aplico'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 9');
-		if(intval($this->getCmpVal('agr_p9_aplico'))==2){
-			$arr_an_agr_p9 = array();
-			for($i=1; $i<=3; $i++){
-				$arr_an_agr_p9[] = 'agr_p9r'.$i.'_t_cal';
-				if($this->es_chk_sel('agr_p9r'.$i.'_t_cal')){
-					$arr_reglas_val['agr_p9r'.$i.'_cant'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 9');
-					$arr_reglas_val['agr_p9r'.$i.'_sup'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 9');
-				}
-			}
-			$arr_reglas_val['div_an_agr_p9'] = array(
-				'no_es_campo'=>true,
-				'regla'=>'al_menos_n_chk', 
-				'arr_cmp_nom'=>$arr_an_agr_p9,
-				'val_n'=>1,
-				'tit_preg'=>'Pregunta 9'
-			);
-		}
+		
 		//	*	Pregunta 10
-		$arr_reglas_val['agr_p10_aplico'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 10');
+		$arr_reglas_val['agr_p10_aplico'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 5');
 		if(intval($this->getCmpVal('agr_p10_aplico'))==2){
 			$arr_an_agr_p10 = array();
 			for($i=1; $i<=3; $i++){
 				$arr_an_agr_p10[] = 'agr_p10r'.$i.'_t_ag';
 				if($this->es_chk_sel('agr_p10r'.$i.'_t_ag')){
-					$arr_reglas_val['agr_p10r'.$i.'_nom'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 10');
-					$arr_reglas_val['agr_p10r'.$i.'_sup'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 10');
-					$arr_reglas_val['agr_p10r'.$i.'_cant'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 10');
-					$arr_reglas_val['agr_p10r'.$i.'_um'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 10');
-					$arr_reglas_val['agr_p10r'.$i.'_n_vez'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 10');
-					$arr_reglas_val['agr_p10r'.$i.'_met'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 10');
+					$arr_reglas_val['agr_p10r'.$i.'_nom'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 5');
+					$arr_reglas_val['agr_p10r'.$i.'_sup'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 5');
+					$arr_reglas_val['agr_p10r'.$i.'_cant'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 5');
+					$arr_reglas_val['agr_p10r'.$i.'_um'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 5');
+					$arr_reglas_val['agr_p10r'.$i.'_n_vez'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 5');
+					$arr_reglas_val['agr_p10r'.$i.'_met'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 5');
 				}
 			}
 			$arr_reglas_val['div_an_agr_p10'] = array(

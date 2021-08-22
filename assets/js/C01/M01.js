@@ -8,15 +8,10 @@ var Modulo = function(){
 			$("#mdl_bienvenido").modal("show");
 		}
 	}
-	function de_prod_sector_3_y_4(){
-		var v_prod_sector3 = getValueForm('prod_sector3', true);
-		var v_prod_sector4 = getValueForm('prod_sector4', true);
-		
-		mostrarSecciones((v_prod_sector3===1 || v_prod_sector4===1), ["#div_prod_rnpa"]);
-	}
+	
 	function de_prod_tipo(o_this){
 		mostrarSecciones(parseInt(o_this.val())===1, ["#div_prod_curp"]);
-		mostrarSecciones(parseInt(o_this.val())===2, ["#div_prod_rfc", "#div_prod_integ"]);
+		mostrarSecciones(parseInt(o_this.val())===2, ["#div_prod_rfc"]);
 	}
 	function de_prod_edo(o_this){
 		$("#fg_prod_mpo").hide();
@@ -101,10 +96,7 @@ var Modulo = function(){
 		activar:function(){
 			bsCustomFileInput.init();
 			modal_es_nuevo();
-			de_prod_sector_3_y_4();
-			$("input[name='prod_sector3'], input[name='prod_sector4']").on('click', function(){
-				de_prod_sector_3_y_4();
-			});
+			
 			//2. Clave de identificación del productor
 			de_prod_tipo($("select[name='prod_tipo']"));
 			$("select[name='prod_tipo']").on("change", function(){

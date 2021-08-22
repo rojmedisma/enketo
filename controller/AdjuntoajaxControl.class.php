@@ -9,9 +9,10 @@ class AdjuntoajaxControl extends ControladorBase{
 	private $ruta_archivo;
 	private $cmp_arc_nom;	//Nombre del campo tipo file
 	private $solo_imagenes = false;	//Para validar que solo se pueda subir archivos de imagen
-	private $max_tam_bytes = 10485760; //Tamaño máximo permitido para subir archivos (10485760 Bytes = 10 MB)
+	private $max_tam_bytes = 2097152; //Tamaño máximo permitido para subir archivos (2097152 Bytes = 2 MB)
 	private $revisar_extensiones = true;
-	private $arr_extensiones = array("doc","docx","xls","xlsx","ppt","pptx","jpg","png","gif","bmp","jpeg","pdf","txt","csv","xml","mp3","mp4","zip","rar","shp","kmz","kml","gdb","mdb","lyr","osm");	//Arreglo de formatos/extensiones permitidos
+	//private $arr_extensiones = array("doc","docx","xls","xlsx","ppt","pptx","jpg","png","gif","bmp","jpeg","pdf","txt","csv","xml","mp3","mp4","zip","rar","shp","kmz","kml","gdb","mdb","lyr","osm");	//Arreglo de formatos/extensiones permitidos
+	private $arr_extensiones = array("jpg","png","gif","bmp","jpeg","pdf","txt","csv");	//Arreglo de formatos/extensiones permitidos
 	private $nom_arc_sist;
 	public function __construct() {
 		
