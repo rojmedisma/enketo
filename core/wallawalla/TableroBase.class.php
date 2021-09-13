@@ -7,6 +7,7 @@
  */
 class TableroBase extends ControladorBase{
 	protected object $permiso;
+	private string $html_cont;
 	/**
 	 * Función propia del proyecto siap_igei
 	 * Constructor para el funcionamiento de las opciones del tablero
@@ -30,8 +31,6 @@ class TableroBase extends ControladorBase{
 	 */
 	protected function setArrHTMLTagLiNavItem() {
 		$this->setArrHTMLTagLiNavItemTablero();
-		//$this->setArrHTMLTagLiNavItemCuest();
-		//$this->setArrHTMLTagLiNavItemMuestra();
 		$this->setArrHTMLTagLiNavItemCat();
 		$this->setArrHTMLTagLiNavItemConf();
 	}
@@ -56,12 +55,31 @@ class TableroBase extends ControladorBase{
 		$inventario_id = (isset($_REQUEST['inventario_id']))? intval($_REQUEST['inventario_id']) : 0;
 		$cat_usuario_id = (isset($_REQUEST['cat_usuario_id']))? intval($_REQUEST['cat_usuario_id']) : 0;
 		$cat_grupo_id = (isset($_REQUEST['cat_grupo_id']))? intval($_REQUEST['cat_grupo_id']) : 0;
+		$componentes_id = (isset($_REQUEST['componentes_id']))? intval($_REQUEST['componentes_id']) : 1;
 		$alte3_html = new ALTE3HTML();
 		
 		$tag_Inic_inventario = '';
 		if($this->tienePermiso('al-inventario')){
 			$alte3_html->setArrHTMLTagLiNavItemCat('inventario_id', $inventario_id, $this->getControlador(), $this->getAccion(), 'catvistagen', 'inventario', 'inventariofrm', 'inicio', $this->es_nuevo, 'fas fa-car', 'Inventario');
 			$tag_Inic_inventario = $alte3_html->getHTMLContenido();
+		}
+		
+		$tag_Inic_cmpte = '';
+		if($this->tienePermiso('al-cmpte')){
+			$arr_param = array(
+				'controlador' => array(
+					'nombre' => 'componentes',
+					'titulo' => 'Componentes',
+					'icono' => 'fas fa-puzzle-piece',
+				),
+				'arr_acciones' => array(
+					array('nombre' => 'pestania01', 'titulo' => 'Contenido', 'icono' => 'far fa-circle'),
+					array('nombre' => 'pestania02', 'titulo' => 'FAQ', 'icono' => 'far fa-circle')
+				)
+			);
+			$alte3_html->setArrHTMLTagLiNavItem($this->getControlador(), $this->getAccion(), $arr_param);
+			$tag_Inic_cmpte = $alte3_html->getHTMLContenido();
+			
 		}
 		
 		$tag_lnic_cat_usuario = '';
@@ -77,8 +95,9 @@ class TableroBase extends ControladorBase{
 		$arr_html_tag = array();
 		if($this->tienePermiso('al-usuario') || $this->tienePermiso('al-grupo')){
 			$arr_html_tag = array(
-				'<li class="nav-header">CATÁLOGOS</li>',
+				'<li class="nav-header">ADMINISTRAR</li>',
 				$tag_Inic_inventario,
+				$tag_Inic_cmpte,
 				$tag_lnic_cat_usuario,
 				$tag_lnic_cat_grupo
 			);
@@ -105,7 +124,6 @@ class TableroBase extends ControladorBase{
 
 			$arr_li_nav_item[] = $alte3_html->getHTMLContenido();
 		}
-		
 		$this->arr_html_tag['li_ni_sb_cuest'] = $arr_li_nav_item;
 	}
 	/**
@@ -150,10 +168,6 @@ class TableroBase extends ControladorBase{
 		$tag_item_manual_usu = tag_string($arr_tag_item_manual_usu);
 		
 		
-		
-		
-		
-		
 		$tag_item_log = "";
 		if($this->tienePermiso('al-log')){
 			$alte3_html->setHTMLLiNavItem('catvistagen', 'log', '<i class="nav-icon fas fa-clipboard-check"></i>&nbsp;<p>Registros de log</p>', 
@@ -182,7 +196,5 @@ class TableroBase extends ControladorBase{
 		);
 		
 		$this->arr_html_tag['li_ni_sb_conf'] = $arr_li_nav_item;
-		
-		
 	}
 }

@@ -95,6 +95,16 @@ class Distintivos{
 					"titulo_pagina"=>"Inventario",
 					"arr_pag_ant"=>array()
 				),
+			),
+			"componentes"=>array(
+				"pestania01"=>array(
+					"titulo_pagina"=>"Contenido",
+					"arr_pag_ant"=>array()
+				),
+				"pestania02"=>array(
+					"titulo_pagina"=>"FAQ",
+					"arr_pag_ant"=>array()
+				),
 			)
 		);
 	}

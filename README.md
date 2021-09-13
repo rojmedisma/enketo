@@ -29,3 +29,21 @@ Panel de administración
 - Archivo vista **FooterDesarrollador.php**. Despliege de los arreglos arr_param y arr_permisos.
 - Clase core **ModeloBase**. Se modificó el método **setGuardarReg** para meter la bandera **solo_actualizar**
 - Clase core **Ayuda**. Se corrigió el evento **getUsuarioId** con la variable de sesión correcta.
+- Clase modelo **ALTE3HTML**. Se modificó el método **setArrHTMLTagLiNavItemCat**
+
+## Versión 0.2.1.16
+
+> Cambios en el proyecto
+
+- Componentes - Sección FAQ. Funcionalidad para modificar registros desde un
+
+
+> Cambios en la plataforma
+
+- Clase modelo **ALTE3HTML**. Se creó el método **setArrHTMLTagLiNavItem**
+- Clase modelo **ALTE3HTML**. Se creó el método **tiene_valor_sub_arreglo**
+- Clase controlador **GuardarControl**. Se crearon los métodos **setArrCmps** y **getArrCmps**, para reducir el código de guardar por forma
+- Principal **Principal.js**. Para permitir la funcionalidad de despliegue de un formulario desde un modal, se crearon las funciones: **formulario_vaciar**, **formulario_llenar**, **ajax_mostrar_frm_modal** y la clase **formulario_modal**
+- Clase controlador **AjaxControl**. Nuevo método **get_arr_reg_faq**
+- Clase controlador **BorrarControl**. Nuevo métrodo **faq**
+

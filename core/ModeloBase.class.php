@@ -6,7 +6,7 @@
  *
  */
 class ModeloBase extends Ayuda{
-	private $arr_reg;
+	protected $arr_reg;
 	protected $arr_tbl;
 	protected $bd;
 	protected $tbl_nom;

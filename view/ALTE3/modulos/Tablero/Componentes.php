@@ -1,0 +1,1 @@
+<?php include_once 'Componente/'.$controlador_obj->getAccion().'.php'; ?>

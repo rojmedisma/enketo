@@ -39,6 +39,9 @@
 							case 'catfrmgpo':
 							case 'cat_grupo': 
 								include_once 'modulos/Tablero/CatFrmGen/CatGrupo.php';	break;
+							case 'componentes':
+								include_once 'modulos/Tablero/Componentes.php';	break;
+								break;
 							
 										
 						}
@@ -79,11 +82,9 @@
 				break;
 			case 'catfrmgpo':
 				case 'cat_usuario': include_once 'modulos/ScriptCatGpo.php';	break;
+			case 'componentes':
+				include_once 'modulos/Tablero/Componente/Scripts.php';	break;
 		}
 		?>
-		
-		<script type="text/javascript">
-				//jsRemoveWindowLoad();
-		</script>
 	</body>
 </html>

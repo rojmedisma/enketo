@@ -18,6 +18,9 @@
 					</div>
 					<h4>Propiedades</h4>
 					<div class="row">
+						<div class="col-md-4"><?php echo $controlador_obj->frm_al3->cmpTexto('veh_consejo', "Consejo o dato práctico"); ?></div>
+					</div>
+					<div class="row">
 						<div class="col-md-3"><?php echo $controlador_obj->frm_al3->cmpNum('veh_precio', 2, "Precio regular"); ?></div>
 						<div class="col-md-3"><?php echo $controlador_obj->frm_al3->cmpNum('veh_precio_descuento', 2, "Precio con descuento"); ?></div>
 					</div>

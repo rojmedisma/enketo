@@ -105,7 +105,7 @@ class CatvistagenControl extends TableroBase{
 	 */
 	public function getHTMLBtnAlta() {
 		if($this->tienePermiso($this->getParametro('permiso_edicion'))){
-			return '<a href="'.define_controlador($this->getParametro('controlador_frm'), $this->getParametro('accion_frm')).'" class="btn btn-info btn-sm"><i class="fa fa-fw fa-file"></i> Alta registro</a>';
+			return '<a href="'.define_controlador($this->getParametro('controlador_frm'), $this->getParametro('accion_frm'), false, $this->getParametro('arr_url_arg')).'" class="btn btn-info btn-sm"><i class="fa fa-fw fa-file"></i> Alta registro</a>';
 		}else{
 			return '';
 		}
