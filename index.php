@@ -4,9 +4,9 @@ include_once 'core/Global.php';
 include_once 'core/Frecuente.func.php';
 include_once 'core/Ayuda.class.php';	//NOTA: Ver si en realidad va a servir
 include_once 'core/ControladorBase.class.php';
-include_once 'core/TableroBase.class.php';	//Archivo propio del proyecto siap_igei
-include_once 'core/CuestBase.class.php';	//Archivo propio del proyecto siap_igei
-include_once 'core/ModeloValidaBase.class.php';	//Archivo propio del proyecto siap_igei
+include_once 'core/'.CARPETA_PROYECTO.'/TableroBase.class.php';	//Archivo propio del proyecto
+include_once 'core/'.CARPETA_PROYECTO.'/CuestBase.class.php';	//Archivo propio del proyecto siap_igei
+include_once 'core/'.CARPETA_PROYECTO.'/ModeloValidaBase.class.php';	//Archivo propio del proyecto siap_igei
 $controlador = (isset($_REQUEST['controlador']))? $_REQUEST['controlador'] : CONTROLADOR_DEFECTO;
 $accion = (isset($_REQUEST['accion']))? $_REQUEST['accion'] : ACCION_DEFECTO;
 
@@ -25,7 +25,6 @@ if(class_exists($clase_controlador)){
 	include_once 'core/BaseDatos.class.php';
 	include_once 'core/ModeloBase.class.php';	//NOTA: Ver si en realidad va a servir
 	
-	
 	$conexion = new Conectar();
 	$mysqli = $conexion->getConexion();    //Variable global usada en la clase BaseDatos
 	
@@ -33,10 +32,11 @@ if(class_exists($clase_controlador)){
 	foreach(glob("model/*.php") as $file){
 		require_once $file;
 	}
-	//Modelos propioos del proyecto siap_igei
-	foreach(glob("model_cuest/*.php") as $file){
+	//Modelos propios del proyecto
+	foreach(glob("model/".CARPETA_PROYECTO."/*.php") as $file){
 		require_once $file;
 	}
+	
 	$controlador_obj = new $clase_controlador();
 	
 	

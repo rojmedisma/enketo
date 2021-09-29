@@ -14,7 +14,6 @@ var FrmInventario = function(){
 			}
 		});
 	}
-	
 	return{
 		activar:function(){
 			$("select[name='veh_marca']").on("change", function(){

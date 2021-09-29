@@ -131,7 +131,7 @@
 <div class="row pl-3">
 	<div class="col-md-12">
 		<label>2. Pregunta con habilitación de renglones</label>
-		<p class="small">Ejemplo de pregunta dividida en renglones que se habilitan al seleccionar la opción de la primera columna</p>
+		<p class="small">Habilitación de renglones a partir de la opción seleccionada en la primera columna</p>
 		<div class="row pl-3">
 			<div class="col-md-4"><label>Aplica renglón</label></div>
 			<div class="col-md-2"><label>Cantidad 1</label></div>

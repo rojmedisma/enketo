@@ -25,8 +25,6 @@ class ValidaC01 extends ModeloValidaBase{
 			'val_n'=>1,
 			'tit_preg'=>'Pregunta 1'
 		);
-		$arr_reglas_val['prod_i_genero'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
-		$arr_reglas_val['prod_edad'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 2');
 		
 		
 		$arr_reglas_val['prod_tipo'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 3');
@@ -41,7 +39,6 @@ class ValidaC01 extends ModeloValidaBase{
 			if($this->getCmpVal('prod_rfc')!=""){
 				$arr_reglas_val['prod_rfc'] = array('regla'=>'rfc_valido', 'tit_preg'=>'Pregunta 3');
 			}
-			$arr_reglas_val['prod_integrantes'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 3');
 		}
 		$arr_reglas_val['prod_edo'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 4');
 		$arr_reglas_val['prod_mpo'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 4');
@@ -379,9 +376,9 @@ class ValidaC01 extends ModeloValidaBase{
 		}
 		
 		//	*	Pregunta 5
-		if($this->es_chk_sel('pec_p2r1_especie') || $this->es_chk_sel('pec_p2r2_especie') || $this->es_chk_sel('pec_p2r3_especie') || $this->es_chk_sel('pec_p2r6_especie')){
+		if($this->es_chk_sel('pec_p4r1') || $this->es_chk_sel('pec_p4r2')){
 			//Sección A
-			if($this->es_chk_sel('pec_p2r1_especie') || $this->es_chk_sel('pec_p2r2_especie')){
+			if($this->es_chk_sel('pec_p4r1')){
 				$arr_an_pec_p5_a = array();
 				for($i=1; $i<=4; $i++){
 					$arr_an_pec_p5_a[] = 'pec_p5r'.$i.'_donde';
@@ -405,7 +402,7 @@ class ValidaC01 extends ModeloValidaBase{
 				
 			}
 			//Sección B
-			if($this->es_chk_sel('pec_p2r3_especie') || $this->es_chk_sel('pec_p2r6_especie')){
+			if($this->es_chk_sel('pec_p4r2')){
 				$arr_an_pec_p5_b = array();
 				for($i=4; $i<=6; $i++){
 					$arr_an_pec_p5_b[] = 'pec_p5r'.$i;
@@ -434,9 +431,9 @@ class ValidaC01 extends ModeloValidaBase{
 		}
 		
 		//	*	Pregunta 6
-		if($this->es_chk_sel('pec_p2r1_3_hato') || $this->es_chk_sel('pec_p2r2_1_hato') || $this->es_chk_sel('pec_p2r3_1_hato') || $this->es_chk_sel('pec_p2r3_3_hato') || $this->es_chk_sel('pec_p2r6_1_hato')){
+		if($this->es_chk_sel('pec_p4r3') || $this->es_chk_sel('pec_p4r4') || $this->es_chk_sel('pec_p4r5')){
 			$arr_an_pec_p6 = array();
-			for($i=1; $i<=4; $i++){
+			for($i=1; $i<=3; $i++){
 				$arr_an_pec_p6[] = 'pec_p6r'.$i.'_espe';
 				if($this->es_chk_sel('pec_p6r'.$i.'_espe')){
 					$arr_reglas_val['pec_p6r'.$i.'_prod'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 6');
@@ -453,9 +450,9 @@ class ValidaC01 extends ModeloValidaBase{
 		
 		//	*	Pregunta 7
 		//Vacas para cría para carne
-		if($this->es_chk_sel('pec_p2r1_1_hato') || $this->es_chk_sel('pec_p2r1_3_hato') || $this->es_chk_sel('pec_p2r2_1_hato') || $this->es_chk_sel('pec_p2r3_1_hato') || $this->es_chk_sel('pec_p2r3_2_hato') || $this->es_chk_sel('pec_p2r4_1_hato') || $this->es_chk_sel('pec_p2r6_1_hato') || $this->es_chk_sel('pec_p2r6_2_hato') || $this->es_chk_sel('pec_p2r6_3_hato')){
+		if($this->es_chk_sel('pec_p4r6') || $this->es_chk_sel('pec_p4r7') || $this->es_chk_sel('pec_p4r8') || $this->es_chk_sel('pec_p4r9') || $this->es_chk_sel('pec_p4r10')){
 			$arr_an_pec_p7 = array();
-			for($i=1; $i<=9; $i++){
+			for($i=1; $i<=5; $i++){
 				$arr_an_pec_p7[] = 'pec_p7r'.$i.'_espe';
 				if($this->es_chk_sel('pec_p7r'.$i.'_espe')){
 					$arr_reglas_val['pec_p7r'.$i.'_porc'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 7');
@@ -476,17 +473,17 @@ class ValidaC01 extends ModeloValidaBase{
 		}
 		
 		//	*	Pregunta 8
-		if($this->es_chk_sel('pec_p2r1_6_hato')){
+		if($this->es_chk_sel('pec_p4r11')){
 			$arr_reglas_val['pec_p8'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 8');
 		}
 		
 		//	*	Pregunta 9
-		if($this->es_chk_sel('pec_p2r3_2_hato')){
+		if($this->es_chk_sel('pec_p4r11')){
 			$arr_reglas_val['pec_p9'] = array('regla'=>'requerido', 'tit_preg'=>'Pregunta 9');
 		}
 		
 		//	*	Pregunta 10
-		if($this->es_chk_sel('pec_p2r1_5_hato') || $this->es_chk_sel('pec_p2r12_especie') || $this->es_chk_sel('pec_p2r13_especie')){
+		if($this->es_chk_sel('pec_p4r12')){
 			$arr_an_pec_p10 = array();
 			for($i=1; $i<=4; $i++){
 				$arr_an_pec_p10[] = 'pec_p10r'.$i.'_espe';

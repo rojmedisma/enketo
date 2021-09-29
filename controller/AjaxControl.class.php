@@ -20,4 +20,12 @@ class AjaxControl extends ControladorBase{
 		}
 		echo $opt_veh_modelo;
 	}
+	public function get_arr_reg_faq() {
+		$faq_id = (isset($_REQUEST["faq_id"]))? intval($_REQUEST["faq_id"]) : 0;
+		
+		$faq = new FAQ();
+		$faq->setArrReg($faq_id);
+		$arr_reg_faq = $faq->getArrReg();
+		echo json_encode($arr_reg_faq);
+	}
 }

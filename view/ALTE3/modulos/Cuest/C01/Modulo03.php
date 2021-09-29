@@ -1,10 +1,10 @@
 <h4>Sección B</h4>
 <h4 class="text-success">Sección con preguntas más extensas y complejas</h4>
 <?php echo $controlador_obj->getHTMLInfoLink('info_sec_2_cpp', 'Acerca de', 'En esta sección podrán ver más ejemplos de preguntas. La funcionalidad es muy similar a la descrita y explicada en las secciones  Principal y Sección A. La principal diferencia es que se hace con opciones de pregunta más extensas y complejas'); ?>
-<h5 class="text-info">Aquí los ejemplos con otras variantes de preguntas</h5>
 <div class="row pl-3">
 	<div class="col-md-12">
-		<label>1. Habilitación de sub-secciones.</label>
+		<label>1. Habilitación de preguntas y sub-secciones.</label>
+		<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_info" data-txt_tit="Mostrar preguntas ocultas" data-id_info="#div_info_pec_p2"><i class="fas fa-info"></i></button>
 		<?php for($i=1; $i<=6; $i++){?>
 		<div class="row pl-3">
 			<div class="col-md-12">
@@ -27,7 +27,6 @@
 						</div>
 						<div class="col-md-3">
 							<label>Opciones</label>
-							<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_info" data-txt_tit="Productividad" data-id_info="#div_info_pec_p2"><i class="fas fa-info"></i></button>
 						</div>
 					</div>
 					<?php foreach($controlador_obj->getArrCmpLlave('pec_hato_e'.$i) as $j=>$llave_val){?>
@@ -80,13 +79,13 @@
 					</div>
 					<div class="row pl-3">
 						<div class="col-md-2">
-							<label>Cabezas</label>
+							<label>Dato numérico 1</label>
 						</div>
 						<div class="col-md-2">
-							<label>Peso promedio (kilogramos/cabeza)</label>
+							<label>Dato numérico 2</label>
 						</div>
 						<div class="col-md-3">
-							<label>Productividad</label>
+							<label>Opciones</label>
 						</div>
 					</div>
 					<div class="row pl-3">
@@ -153,8 +152,8 @@
 </div>
 <div class="row pl-3">
 	<div class="col-md-12">
-		<label>4. ¿En qué actividades o equipos consume energía para su producción pecuaria?</label>
-		<span class="small">Por favor seleccione todas las opciones que apliquen de la siguiente lista</span>
+		<label>3. Pregunta sencilla con opciones múltiples</label>
+		<p class="small">Al seleccionar la última opción, se despliega un campo para especificar</p>
 		<?php for($i=1; $i<=13; $i++){?>
 		<div class="row pl-3">
 			<div class="col-md-12">
@@ -170,13 +169,12 @@
 		</div>
 	</div>
 </div>
-<h5 class="text-info">Fermentación entérica</h5>
 <div class="row pl-3" id="div_pec_p5">
 	<div class="col-md-12">
-		<label>5. Alimentación del hato</label>
+		<label>4. Campo checkbox que despliega de sub-preguntas</label>
 		<div class="row pl-3" id="div_pec_p5_sec_A">
 			<div class="col-md-12">
-				<label>¿Dónde se alimentan?</label>
+				<label>Primera sección</label>
 			</div>
 			<?php for($i=1; $i<=4; $i++){?>
 			<div class="col-md-12" >
@@ -191,18 +189,18 @@
 					<?php }?>
 					<div class="row pl-3">
 						<div class="col-md-6">
-							<label>¿Qué alimento consume principalmente el ganado según la temporada?</label>
+							<label>Campos de tipo select 1 y 2</label>
 							<div class="row">
 								<div class="col-md-6">
-									<label>Lluvias</label>
+									<label>Seleccionar</label>
 								</div>
 								<div class="col-md-6">
-									<label>Secas</label>
+									<label>Seleccionar</label>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-3">
-							<label>¿Cuál es el porcentaje de forraje en la dieta en todo el año?</label>
+							<label>Campo select 3</label>
 						</div>
 					</div>
 					<div class="row pl-3">
@@ -229,28 +227,28 @@
 		</div><!-- /#div_pec_p5_sec_A -->
 		<div class="row pl-3" id="div_pec_p5_sec_B">
 			<div class="col-md-12">
-				<label>Por favor, de las siguientes opciones, seleccione las aplicables a su unidad de producción:</label>
+				<label>Segunda sección</label>
 				<div class="row pl-3">
 					<div class="col-md-12">
-						<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r4', 'Las hembras en gestación están estabuladas durante último trimestre');?>
+						<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r4', 'Fusce vulputate quam quis augue ultrices, dictum viverra elit consequat.');?>
 					</div>
 					<div class="col-md-12">
-						<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5', 'Los animales pastorean');?>
+						<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5', 'Nunc porta lacus sed sapien mollis, id commodo dui tempus.');?>
 						<div class="row pl-3" id="div_pec_p5r5_sub">
 							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_1', 'En terreno plano');?>
+								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_1', 'Ut a mi id lacus condimentum tempor ut vel lorem.');?>
 							</div>
 							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_2', 'En lomas suaves');?>
+								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_2', 'Morbi sed libero nec arcu dapibus maximus non a erat.');?>
 							</div>
 							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_3', 'En lomeríos');?>
+								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_3', 'Sed ut felis ut velit hendrerit tempor eu et velit.');?>
 							</div>
 							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_4', 'En terreno montañoso');?>
+								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_4', 'In malesuada justo ut eros iaculis fringilla.');?>
 							</div>
 							<div class="col-md-12">
-								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_5', 'En tierras bajas o cercanas al nivel del mar');?>
+								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_5', 'Maecenas suscipit purus a aliquam tempus.');?>
 							</div>
 							<div class="col-md-12">
 								<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r5_6', 'Otro');?>
@@ -264,7 +262,7 @@
 							<div class="col-md-12">
 								<div class="row pl-3">
 									<div class="col-md-6">
-										<?php echo $controlador_obj->frm_al3->cmpSelectDeSubCat('pec_p5r5_3_1', 'pec_p5r5_3_1', '¿Qué distancia promedio caminan los animales durante un día?') ?>
+										<?php echo $controlador_obj->frm_al3->cmpSelectDeSubCat('pec_p5r5_3_1', 'pec_p5r5_3_1', 'Campo select') ?>
 									</div>
 								</div>
 							</div>
@@ -272,7 +270,7 @@
 						</div>
 					</div>
 					<div class="col-md-12">
-						<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r6', 'Los animales comen en su corral o establo');?>
+						<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p5r6', 'Pellentesque et augue dignissim, placerat velit laoreet, rhoncus tellus.');?>
 					</div>
 					<div class="col-md-12">
 						<?php echo $controlador_obj->frm_al3->validacionSinCmp('div_an_pec_p5_b'); ?>
@@ -285,17 +283,17 @@
 <div class="row pl-3" id="div_pec_p6">
 	<div class="col-md-12">
 		<div id="div_pec_p6_tit">
-			<label>6. ¿Cuál es su producción promedio diaria de leche?</label>
+			<label>5. Desbloqueo de opción</label>
 			<div class="row pl-3">
 				<div class="col-md-3">
 					<label></label>
 				</div>
 				<div class="col-md-2">
-					<label>Producción de leche (Litros leche/día)</label>
+					<label>Dato numérico</label>
 				</div>
 			</div>
 		</div>
-		<?php for($i=1; $i<=4; $i++){?>
+		<?php for($i=1; $i<=3; $i++){?>
 		<div class="row pl-3" id="<?php echo 'div_pec_p6r'.$i; ?>">
 			<div class="col-md-3">
 				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p6r'.$i.'_espe', $controlador_obj->getCmpLlaveVal('pec_p6_espe', $i));?>
@@ -315,20 +313,20 @@
 <div class="row pl-3" id="div_pec_p7">
 	<div class="col-md-12">
 		<div id="div_pec_p7_tit">
-			<label>7. ¿Qué porcentaje de las hembras en el hato tienen crías durante el año y cuántas  crías tienen en promedio?</label>
+			<label>6. Despliegue de opciones que dependen de lo seleccionado en la pregunta 1</label>
 			<div class="row pl-3">
 				<div class="col-md-3">
-					<label></label>
+					<label>Opciones</label>
 				</div>
 				<div class="col-md-2">
-					<label>Porcentaje de las hembras que pasa por gestación (que tiene crías)</label>
+					<label>Porcentaje</label>
 				</div>
 				<div class="col-md-2">
-					<label>Número promedio de crías por hembra</label>
+					<label>Cantidad</label>
 				</div>
 			</div>
 		</div>
-		<?php for($i=1; $i<=8; $i++){?>
+		<?php for($i=1; $i<=5; $i++){?>
 		<div class="row pl-3" id="<?php echo 'div_pec_p7r'.$i; ?>">
 			<div class="col-md-3">
 				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p7r'.$i.'_espe', $controlador_obj->getCmpLlaveVal('pec_p7_espe', $i));?>
@@ -355,26 +353,26 @@
 </div>
 <div class="row pl-3" id="div_pec_p8">
 	<div class="col-md-12">
-		<label>8. ¿Cuál es la edad de destete de las crías en el hato?</label>
+		<label>7. Despliegue de pregunta dependiente de la pregunta 1</label>
 		<div class="row pl-3">
 			<div class="col-md-2">
 				<?php echo $controlador_obj->frm_al3->cmpNum('pec_p8', 0) ?>
 			</div>
 			<div class="col-md-2">
-				meses
+				Años
 			</div>
 		</div>
 	</div>
 </div>
 <div class="row pl-3" id="div_pec_p9">
 	<div class="col-md-12">
-		<label>9. ¿Cuál es su producción anual de lana? (ya seca, antes de limpiarla)</label>
+		<label>8. Despliegue de pregunta dependiente de la pregunta 1</label>
 		<div class="row pl-3">
 			<div class="col-md-2">
 				<?php echo $controlador_obj->frm_al3->cmpNum('pec_p9', 0) ?>
 			</div>
 			<div class="col-md-2">
-				kilogramos/año
+				Meses
 			</div>
 		</div>
 	</div>
@@ -382,16 +380,16 @@
 <div class="row pl-3" id="div_pec_p10">
 	<div class="col-md-12">
 		<div id="div_pec_p10_tit">
-			<label>10. ¿Cuánto tiempo trabajan sus animales haciendo tracción?</label>
+			<label>9. Despliegue de opciones dependientes de lo seleccionado en la pregunta 1</label>
 			<div class="row pl-3">
 				<div class="col-md-4">
 					<label></label>
 				</div>
 				<div class="col-md-2">
-					<label>Horas al día</label>
+					<label>Cantidad 1</label>
 				</div>
 				<div class="col-md-2">
-					<label>Días en el año</label>
+					<label>Cantidad 2</label>
 				</div>
 			</div>
 		</div>
@@ -420,28 +418,26 @@
 		</div>
 	</div>
 </div>
-<h5 class="text-info">Manejo de excretas</h5>
 <div class="row pl-3">
 	<div class="col-md-12">
-		<label>11. ¿Cómo maneja las excretas de su hato?</label>
+		<label>10. Habilitación de columna de porcentaje</label>
 		<div class="row pl-3">
 			<div class="col-md-12">
 				<div class="row">
 					<div class="col-md-3">
-						<label>Método de manejo</label>
+						<label>Ver porcentaje</label>
 						<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_info" data-txt_tit="Método de manejo" data-id_info="#div_info_pec_p11"><i class="fas fa-info"></i></button>
 					</div>
 					<div class="col-md-3">
-						<label>Porcentaje de las excretas</label>
+						<label>Porcentaje</label>
 						<p class="small">(debe sumar 100%)</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r1', 'Laguna anaeróbica descubierta');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r1', 'Opción 1 (Sin campo select)');?>
 				<div class="row" id="div_pec_p11r1_sub">
-					<div class="col-md-3">
-						
+					<div class="col-md-3">		
 					</div>
 					<div class="col-md-2">
 						<?php echo $controlador_obj->frm_al3->cmpNum('pec_p11r1_porc', 0) ?>
@@ -452,7 +448,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r2', 'Almacenamiento en líquido debajo del piso de confinamiento de los animales');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r2', 'Opción 2 (Con campo select)');?>
 				<div id="div_pec_p11r2_sub">
 					<div class="row">
 						<div class="col-md-3">
@@ -468,7 +464,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r3', 'Camas profundas para bovinos y porcinos');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r3', 'Opción 3 (Con campo select)');?>
 				<div id="div_pec_p11r3_sub">
 					<div class="row">
 						<div class="col-md-3">
@@ -484,7 +480,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r4', 'Almacenamiento sólido del orden de meses');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r4', 'Opción 4 (Con campo select)');?>
 				<div id="div_pec_p11r4_sub">
 					<div class="row">
 						<div class="col-md-3">
@@ -500,7 +496,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r5', 'Lote seco que se remueve periódicamente');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r5', 'Opción 5 (Sin campo select)');?>
 				<div class="row" id="div_pec_p11r5_sub">
 					<div class="col-md-3">
 						
@@ -514,7 +510,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r6', 'Dispersión diaria en campo');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r6', 'Opción 6 (Sin campo select)');?>
 				<div class="row" id="div_pec_p11r6_sub">
 					<div class="col-md-3">
 						
@@ -528,7 +524,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r7', 'Composteo');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r7', 'Opción 7 (Con campo select)');?>
 				<div id="div_pec_p11r7_sub">
 					<div class="row">
 						<div class="col-md-3">
@@ -544,7 +540,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r8', 'Sin manejo, se quedan en campo: Pastizal/ Agostadero/ Potrero');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r8', 'Opción 8 (Sin campo select)');?>
 				<div class="row" id="div_pec_p11r8_sub">
 					<div class="col-md-3">
 						
@@ -558,7 +554,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r9', 'Cama de excretas de aves de corral que se limpia entre ciclos productivos');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r9', 'Opción 9 (Sin campo select)');?>
 				<div class="row" id="div_pec_p11r9_sub">
 					<div class="col-md-3">
 						
@@ -572,7 +568,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r10', 'Tratamiento aeróbico');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r10', 'Opción 10 (Sin campo select)');?>
 				<div class="row" id="div_pec_p11r10_sub">
 					<div class="col-md-3">
 						
@@ -586,7 +582,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r11', 'Quemado como combustible');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r11', 'Opción 11 (Sin campo select)');?>
 				<div class="row" id="div_pec_p11r11_sub">
 					<div class="col-md-3">
 						
@@ -600,7 +596,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r12', 'Digestor anaerobio');?>
+				<?php echo $controlador_obj->frm_al3->cmpCheckbox('pec_p11r12', 'Opción 12 (Con campo select)');?>
 				<div id="div_pec_p11r12_sub">
 					<div class="row">
 						<div class="col-md-3">
@@ -638,20 +634,19 @@
 </div>
 <div class="row pl-3">
 	<div class="col-md-12">
-		<label>12. Por favor indique las principales especies o nombres de árboles en su unidad de producción, su número, el diámetro del tronco a una altura de 1.5m y, si es posible, la altura promedio o los años que tiene cada especie en su predio.</label>
-		<p class="small">Solo para el caso de forma de producción silvopastoril o agrosilvopastoril.</p>
+		<label>11. Pregunta sin habilitación de renglones</label>
 		<div class="row pl-3">
-			<div class="col-md-4"><label>Especies</label></div>
-			<div class="col-md-1"><label>Número de árboles</label></div>
-			<div class="col-md-1"><label>Diámetro</label></div>
+			<div class="col-md-4"><label>Descripción</label></div>
+			<div class="col-md-1"><label>Total</label></div>
+			<div class="col-md-1"><label>Cantidad</label></div>
 			<div class="col-md-2"><label>Unidad de medida</label></div>
-			<div class="col-md-1"><label>Altura o edad</label></div>
+			<div class="col-md-1"><label>Cantidad</label></div>
 			<div class="col-md-2"><label>Unidad de medida</label></div>
 		</div>
 		<?php for($i=1; $i<=6; $i++){?>
 		<?php if($i==6){?>
 		<div class="row pl-3">
-			<div class="col-md-4">Otros: ¿cuáles?</div>
+			<div class="col-md-4">Adicional</div>
 		</div>
 		<?php }?>
 		<div class="row pl-3">
@@ -663,41 +658,38 @@
 			<div class="col-md-2"><?php echo $controlador_obj->frm_al3->cmpSelectDeSubCat('pec_p12r'.$i.'_um', 'pec_p12_um');?></div>
 		</div>
 		<?php }?>
-		<div class="row pl-3">
-			<p class="small">Nota: por favor, considere que, si su producción es silvopastoril o agrosilvopastoril, se le ruega que complete la sección “agricultura” de este cuestionario, en caso de que no lo haya hecho ya. ¡Muchas gracias!</p>
-		</div>
 	</div>
 </div>
 
 <div class="row pl-3">
 	<div class="col-md-12">
-		<?php echo $controlador_obj->frm_al3->cmpTextArea('pec_comentarios', 'Observaciones/Comentarios para la sección actual') ?>
+		<?php echo $controlador_obj->frm_al3->cmpTextArea('pec_comentarios', 'Cuadro de texto') ?>
 	</div>
 </div>
 <div id="div_info_pec_p2" style="display:none">
-	<p>El valor de productividad es un aproximado. Por favor seleccione la opción que sea más cercana a su situación particular.</p>
+	<p>Quisque finibus felis non justo pulvinar tristique.</p>
 </div>
 <div id="div_info_pec_p11" style="display:none">
 	<ul>
-		<li><strong>Laguna anaerobia descubierta:</strong> es un tipo de sistema de almacenamiento en líquido diseñado para combinar los procesos de estabilización y almacenamiento de las excretas. El agua flotante de la superficie puede ser reutilizada para operaciones de enjuague o para irrigación de campos.</li>
-		<li><strong>Almacenamiento en líquido debajo del sitio de confinamiento:</strong> se refiere a la recolección y almacenamiento con poca o ninguna agua agregada, típicamente debajo de un piso de rejilla, generalmente por períodos menores a un año. Las excretas se pueden bombear fuera del almacenamiento a un tanque secundario o se pueden almacenar y aplicar directamente a los campos. </li>
-		<li><strong>Cama profunda:</strong> a medida que las excretas se acumulan, se agrega material orgánico continuamente para absorber la humedad durante un ciclo de producción y posiblemente hasta por 6 a 12 meses. Este sistema de manejo también se conoce como “en lechos” y puede combinarse con el de lote seco. Hay periodos en que los que los animales son parte del sistema de manejo y mezclan activamente las excretas, y períodos en los que no se toca la cama.</li>
+		<li>Nunc venenatis est eu tristique placerat.</li>
+		<li>Phasellus at sapien vitae justo commodo blandit.</li>
+		<li>Duis accumsan nisi quis est pharetra, quis auctor mauris consequat.</li>
 		<li>
-			<strong>Almacenamiento sólido:</strong> las excretas se almacenan por un periodo típico del orden de meses en forma de pilas.
+			<strong>Duis accumsan nisi quis est pharetra, quis auctor mauris consequat.</strong>
 			<ul>
-				<li>Puede hacerse así por la adición de material para formar camas en los corrales y por la pérdida de humedad por evaporación.</li>
-				<li>Otra manera es similar al anterior, pero la pila se cubre con plástico para reducir la superficie expuesta al ambiente y/o se compacta para aumentar la densidad y reducir el espacio libre, lleno de aire, entre el material. </li>
-				<li>También hay almacenamiento sólido con agentes de aglutinamiento, donde las excretas se mezclan con materiales especiales para darle soporte estructural. Esto permite la aeración natural en la pila, promoviendo su descomposición. El material puede ser residuo de cultivos, como esquilmos, hojarasca, paja, etc.</li>
-				<li>Y hay almacenamiento sólido con aditivos, donde se añaden sustancias específicas para reducir emisiones gaseosas. La adición de atapulgita, diciandiamida e incluso composta madura han demostrado la reducción de emisiones de N2O. Asimismo, la adición de fosfoyeso reduce las emisiones de CH4.</li>
+				<li>Donec aliquet dolor non mi faucibus gravida.</li>
+				<li>Etiam viverra est vel risus rutrum, vitae consectetur massa ultricies.</li>
+				<li>Donec semper eros bibendum purus blandit mattis non vitae justo.</li>
+				<li>Cras lacinia nisi molestie egestas ultricies.</li>
 			</ul>
 		</li>
-		<li><strong>Lote seco:</strong> ocurre en un espacio de confinamiento abierto pavimentado o no, sin cubierta vegetativa. Este sistema no requiere que se añada material adicional para controlar la humedad. Las excretas pueden removerse periódicamente y aplicarse a los campos de cultivo.</li>
-		<li><strong>Dispersión diaria:</strong> como rutina, las excretas se retiran de las instalaciones de confinamiento y se dispersan en campos de cultivo o de pastizal en un lapso de alrededor de 24 horas desde la excreción.</li>
-		<li><strong>Composteo:</strong> se trata de la descomposición de las excretas en condiciones aerobias. Puede hacerse por diferentes métodos: en contenedor con aireación forzada utilizando alguna especie de soplador, o ser de pasiva según la corriente de aire natural.</li>
-		<li><strong>Sin manejo:</strong> las excretas se quedan en el  Pastizal/ Agostadero/ Potrero dispersas según el movimiento de los animales, no se manejan.</li>
-		<li><strong>Camas de excretas de aves de corral:</strong> se deja durante todo el ciclo de producción y se limpia entre ciclos.</li>
-		<li><strong>Tratamiento aeróbico:</strong> las excretas se tratan con aireación natural o forzada. La aireación natural se limita a estanques y sistemas de humedales aerobios y facultativos y se debe principalmente a la fotosíntesis. Por lo tanto, estos sistemas generalmente se vuelven anóxicos durante los períodos sin luz solar.</li>
-		<li><strong>Quema como combustible:</strong> las excretas y orina que los animales dejan en los pastos se seca con el sol y el ambiente, y posteriormente se colecta y se usa como combustible.</li>
-		<li><strong>Digestor anaerobio:</strong> se utiliza para producir biogás. Pueden ser sistemas de alta calidad y bajos en fugas, o con alto nivel de fugas. El biogás se captura y se utiliza como combustible, o se quema.</li>		
+		<li>Cras non nibh at magna posuere iaculis.</li>
+		<li>Nullam convallis tellus sed lectus sollicitudin, a sagittis lectus scelerisque.</li>
+		<li>In tempus erat id dui rhoncus, a maximus est ornare.</li>
+		<li>Cras laoreet tortor bibendum porta malesuada.</li>
+		<li>Maecenas ac risus eu diam lacinia ornare quis nec diam.</li>
+		<li>Cras vel risus sed magna gravida posuere.</li>
+		<li>Donec vehicula erat eget enim gravida eleifend.</li>
+		<li>Etiam vel elit a mauris rhoncus dapibus.</li>		
 	</ul>
 </div>

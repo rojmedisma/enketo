@@ -8,6 +8,7 @@
 class GuardarControl extends ControladorBase{
 	private $controlador_destino;
 	private $accion_destino;
+	private $arr_cmps;
 	/**
 	 * Constructor del controlador
 	 */
@@ -84,7 +85,7 @@ class GuardarControl extends ControladorBase{
 	}
 	public function inventario() {
 		$inventario_id = (isset($_REQUEST['inventario_id']))? intval($_REQUEST['inventario_id']) : 0;
-		if(!$this->tienePermiso('borrar-invent')){
+		if(!$this->tienePermiso('ae-inventario')){
 			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Guardar inventario'));
 		}
 		$inventario = new Inventario();
@@ -110,6 +111,34 @@ class GuardarControl extends ControladorBase{
 		$log = new Log();
 		$log->setRegLog('inventario_id', $inventario_id, 'Guardar', 'Aviso', 'Se guardó registro de Inventario');
 		redireccionar($this->controlador_destino, $this->accion_destino, array('inventario_id'=>$inventario_id));
+	}
+	public function componentes() {
+		$componentes_id = (isset($_REQUEST['componentes_id']))? intval($_REQUEST['componentes_id']) : 0;
+		if(!$this->tienePermiso('ae-cmpte')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Guardar componentes'));
+		}
+		
+		$componentes = new Componentes();
+		$arr_cmps_cu = $componentes->getArrCmpsTbl();
+		$arr_cmps = array();
+		foreach($arr_cmps_cu as $arr_cmps_cu_det){
+			$cmp_nom = $arr_cmps_cu_det['Field'];
+			switch($cmp_nom){
+				case 'componentes_id':
+				case 'borrar':
+					break;
+				default:
+					$arr_cmps[$cmp_nom] = (isset($_REQUEST[$cmp_nom]))? txt_sql($_REQUEST[$cmp_nom]) : txt_sql("");
+					break;
+			}
+		}
+		$componentes->setGuardarReg($arr_cmps, $componentes_id, true);
+		if($componentes->getEsError()){
+			$this->redireccionaErrorDeArr($componentes->getArr1erError());
+		}
+		$log = new Log();
+		$log->setRegLog('componentes_id', $componentes_id, 'Guardar', 'Aviso', 'Se guardó registro de Componentes');
+		redireccionar($this->controlador_destino, $this->accion_destino, array('componentes_id'=>$componentes_id));
 	}
 	public function cultivo() {
 		$cultivo_id = (isset($_REQUEST['cultivo_id']))? intval($_REQUEST['cultivo_id']) : 0;
@@ -170,5 +199,43 @@ class GuardarControl extends ControladorBase{
 		$log = new Log();
 		$log->setRegLog('cult_inventario_id', $cult_inventario_id, 'Guardar', 'Aviso', 'Se guardó registro de Inventario cultivo');
 		redireccionar($this->controlador_destino, $this->accion_destino, array('cultivo_id'=>$cultivo_id));
+	}
+	/**
+	 * Para proyecto wallawalla
+	 */
+	public function faq() {
+		$faq_id = (isset($_REQUEST['faq_id']))? intval($_REQUEST['faq_id']) : 0;
+		if(!$this->tienePermiso('ae-cmpte')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Guardar grupo'));
+		}
+		
+		$faq = new FAQ();
+		$arr_cmps_cu = $faq->getArrCmpsTbl();
+		$this->setArrCmps($arr_cmps_cu, 'faq_id');
+		$arr_cmps = $this->getArrCmps();
+		
+		$faq->setGuardarReg($arr_cmps, $faq_id);
+		$faq_id = $faq->getCmpIdVal();
+		$log = new Log();
+		$log->setRegLog('faq_id', $faq_id, 'Guardar', 'Aviso', 'Se guardó registro de FAQ');
+		redireccionar($this->controlador_destino, $this->accion_destino, array('faq_id'=>$faq_id));
+	}
+	private function setArrCmps($arr_cmps_tbl, $nom_cmp_id){
+		$arr_cmps = array();
+		foreach($arr_cmps_tbl as $arr_cmps_cu_det){
+			$cmp_nom = $arr_cmps_cu_det['Field'];
+			switch($cmp_nom){
+				case $nom_cmp_id:
+				case 'borrar':
+					break;
+				default:
+					$arr_cmps[$cmp_nom] = (isset($_REQUEST[$cmp_nom]))? txt_sql($_REQUEST[$cmp_nom]) : txt_sql("");
+					break;
+			}
+		}
+		$this->arr_cmps = $arr_cmps;
+	}
+	private function getArrCmps() {
+		return $this->arr_cmps;
 	}
 }

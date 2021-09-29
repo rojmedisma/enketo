@@ -70,4 +70,13 @@ class BorrarControl extends ControladorBase{
 		$inventario->borrarRegistro($inventario_id);
 		redireccionar($this->controlador_destino, $this->accion_destino);
 	}
+	public function faq() {
+		$faq_id = (isset($_REQUEST['faq_id']))? intval($_REQUEST['faq_id']) : 0;
+		if(!$this->tienePermiso('borrar-faq')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Borrar FAQ'));
+		}
+		$faq = new FAQ();
+		$faq->borrarRegistro($faq_id);
+		redireccionar($this->controlador_destino, $this->accion_destino);
+	}
 }
