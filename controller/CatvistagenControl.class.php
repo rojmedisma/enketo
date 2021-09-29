@@ -23,7 +23,7 @@ class CatvistagenControl extends TableroBase{
 		);
 		$this->setArrDatoVistaValor('tit_tabla', 'Inventario');
 		$inventario = new Inventario();
-		$inventario->setArrTblInv();
+		$inventario->setArrTblVistaInventario();
 		$this->arr_tabla = $inventario->getArrTbl();
 		//echo json_encode($this->arr_tabla);
 		parent::setArrHTMLTagLiNavItem();	//Se crean los items del tablero
@@ -64,6 +64,42 @@ class CatvistagenControl extends TableroBase{
 		$cat_grupo = new CatGrupo();
 		$cat_grupo->setArrTbl();
 		$this->arr_tabla = $cat_grupo->getArrTbl();
+		parent::setArrHTMLTagLiNavItem();	//Se crean los items del tablero
+	}
+	/**
+	 * Para proyecto WallaWalla
+	 */
+	public function cat_veh_marca() {
+		$this->arr_param = array(
+			'permiso_borrar'=>'borrar-marca',
+			'permiso_edicion'=>'ae-marca',
+			'cmp_id_nom'=>'cat_veh_marca_id',
+			'controlador_frm'=>'catfrmgen',
+			'accion_frm'=>$this->getAccion(),
+			'catalogo'=>$this->getAccion()
+		);
+		$this->setArrDatoVistaValor('tit_tabla', 'Catálogo de marcas de vehículos');
+		$cat_veh_marca = new CatN("cat_veh_marca");
+		$cat_veh_marca->setArrTbl();
+		$this->arr_tabla = $cat_veh_marca->getArrTbl();
+		parent::setArrHTMLTagLiNavItem();	//Se crean los items del tablero
+	}
+	/**
+	 * Para proyecto WallaWalla
+	 */
+	public function cat_veh_modelo() {
+		$this->arr_param = array(
+			'permiso_borrar'=>'borrar-modelo',
+			'permiso_edicion'=>'ae-modelo',
+			'cmp_id_nom'=>'cat_veh_modelo_id',
+			'controlador_frm'=>'catfrmgen',
+			'accion_frm'=>$this->getAccion(),
+			'catalogo'=>$this->getAccion()
+		);
+		$this->setArrDatoVistaValor('tit_tabla', 'Catálogo de modelos de vehículos');
+		$cat_veh_modelo = new CatN("cat_veh_modelo");
+		$cat_veh_modelo->setArrTblVistaCatN();
+		$this->arr_tabla = $cat_veh_modelo->getArrTbl();
 		parent::setArrHTMLTagLiNavItem();	//Se crean los items del tablero
 	}
 	/**

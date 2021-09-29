@@ -80,6 +80,15 @@
 					
 				</div>
 			</div>
+			<h4>En Detalles del vehículo (Vehicle details), pestaña: Additional Info</h4>
+			<div class="row">
+				<div class="col-md-4">
+					<?= $controlador_obj->frm_al3->cmpTexto('inv_inf_ad_tit', 'Título'); ?>
+				</div>
+				<div class="col-md-8">
+					<?= $controlador_obj->frm_al3->cmpTextArea('inv_inf_ad_desc', 'Contenido'); ?>
+				</div>
+			</div>
 		</div>
 		<div class="card-footer">
 			<div class="btn-group float-right">

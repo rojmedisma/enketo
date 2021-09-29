@@ -3,6 +3,13 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		seccion_faq.activar();
+		
+	});
+</script>
+<?php else:?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		bsCustomFileInput.init();
 	});
 </script>
 <?php endif;?>

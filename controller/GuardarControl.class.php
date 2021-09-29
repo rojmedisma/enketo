@@ -220,6 +220,56 @@ class GuardarControl extends ControladorBase{
 		$log->setRegLog('faq_id', $faq_id, 'Guardar', 'Aviso', 'Se guardó registro de FAQ');
 		redireccionar($this->controlador_destino, $this->accion_destino, array('faq_id'=>$faq_id));
 	}
+	public function rev_slider() {
+		$rev_slider_id = (isset($_REQUEST['rev_slider_id']))? intval($_REQUEST['rev_slider_id']) : 0;
+		if(!$this->tienePermiso('ae-cmpte')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Guardar Rev. Slider'));
+		}
+		$rev_slider = new RevSlider();
+		$arr_cmps_cu = $rev_slider->getArrCmpsTbl();
+		$this->setArrCmps($arr_cmps_cu, 'rev_slider_id');
+		$arr_cmps = $this->getArrCmps();
+		
+		$rev_slider->setGuardarReg($arr_cmps, $rev_slider_id);
+		$rev_slider_id = $rev_slider->getCmpIdVal();
+		$log = new Log();
+		$log->setRegLog('rev_slider_id', $rev_slider_id, 'Guardar', 'Aviso', 'Se guardó registro Rev. Slider');
+		redireccionar($this->controlador_destino, $this->accion_destino, array('rev_slider_id'=>$rev_slider_id));
+	}
+	public function cat_veh_marca() {
+		$cat_veh_marca_id = (isset($_REQUEST['cat_veh_marca_id']))? intval($_REQUEST['cat_veh_marca_id']) : 0;
+		if(!$this->tienePermiso('ae-marca')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Guardar Marca'));
+		}
+		$cat_veh_marca = new CatN('cat_veh_marca');
+		$arr_cmps_cu = $cat_veh_marca->getArrCmpsTbl();
+		$this->setArrCmps($arr_cmps_cu, 'cat_veh_marca_id');
+		$arr_cmps = $this->getArrCmps();
+		
+		$cat_veh_marca->setGuardarReg($arr_cmps, $cat_veh_marca_id);
+		$cat_veh_marca_id = $cat_veh_marca->getCmpIdVal();
+		
+		$log = new Log();
+		$log->setRegLog('cat_veh_marca_id', $cat_veh_marca_id, 'Guardar', 'Aviso', 'Se guardó registro Marca');
+		redireccionar($this->controlador_destino, $this->accion_destino, array('cat_veh_marca_id'=>$cat_veh_marca_id));
+	}
+	public function cat_veh_modelo() {
+		$cat_veh_modelo_id = (isset($_REQUEST['cat_veh_modelo_id']))? intval($_REQUEST['cat_veh_modelo_id']) : 0;
+		if(!$this->tienePermiso('ae-modelo')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Guardar Modelo'));
+		}
+		$cat_veh_modelo = new CatN('cat_veh_modelo');
+		$arr_cmps_cu = $cat_veh_modelo->getArrCmpsTbl();
+		$this->setArrCmps($arr_cmps_cu, 'cat_veh_modelo_id');
+		$arr_cmps = $this->getArrCmps();
+		
+		$cat_veh_modelo->setGuardarReg($arr_cmps, $cat_veh_modelo_id);
+		$cat_veh_modelo_id = $cat_veh_modelo->getCmpIdVal();
+		
+		$log = new Log();
+		$log->setRegLog('cat_veh_modelo_id', $cat_veh_modelo_id, 'Guardar', 'Aviso', 'Se guardó registro de Modelo de vehículo');
+		redireccionar($this->controlador_destino, $this->accion_destino, array('cat_veh_modelo_id'=>$cat_veh_modelo_id));
+	}
 	private function setArrCmps($arr_cmps_tbl, $nom_cmp_id){
 		$arr_cmps = array();
 		foreach($arr_cmps_tbl as $arr_cmps_cu_det){

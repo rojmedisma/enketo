@@ -58,6 +58,14 @@ class Distintivos{
 					"titulo_pagina"=>"Consulta inventario",
 					"arr_pag_ant"=>array()
 				),
+				"cat_veh_marca"=>array(
+					"titulo_pagina"=>"Consulta marcas de automóviles",
+					"arr_pag_ant"=>array()
+				),
+				"cat_veh_modelo"=>array(
+					"titulo_pagina"=>"Consulta modelos de automóviles",
+					"arr_pag_ant"=>array()
+				),
 			),
 			"catfrmgen"=>array(
 				"cat_usuario"=>array(
@@ -66,6 +74,14 @@ class Distintivos{
 				),
 				"indicadores"=>array(
 					"titulo_pagina"=>"Indicadores",
+					"arr_pag_ant"=>array()
+				),
+				"cat_veh_marca"=>array(
+					"titulo_pagina"=>"Marca de automóvil",
+					"arr_pag_ant"=>array()
+				),
+				"cat_veh_modelo"=>array(
+					"titulo_pagina"=>"Modelo de automóvil",
 					"arr_pag_ant"=>array()
 				),
 				
@@ -103,6 +119,10 @@ class Distintivos{
 				),
 				"pestania02"=>array(
 					"titulo_pagina"=>"FAQ",
+					"arr_pag_ant"=>array()
+				),
+				"pestania03"=>array(
+					"titulo_pagina"=>"Imágenes",
 					"arr_pag_ant"=>array()
 				),
 			)

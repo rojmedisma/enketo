@@ -56,6 +56,9 @@ class TableroBase extends ControladorBase{
 		$cat_usuario_id = (isset($_REQUEST['cat_usuario_id']))? intval($_REQUEST['cat_usuario_id']) : 0;
 		$cat_grupo_id = (isset($_REQUEST['cat_grupo_id']))? intval($_REQUEST['cat_grupo_id']) : 0;
 		$componentes_id = (isset($_REQUEST['componentes_id']))? intval($_REQUEST['componentes_id']) : 1;
+		$cat_veh_marca_id = (isset($_REQUEST['cat_veh_marca_id']))? intval($_REQUEST['cat_veh_marca_id']) : 0;
+		$cat_veh_modelo_id = (isset($_REQUEST['cat_veh_modelo_id']))? intval($_REQUEST['cat_veh_modelo_id']) : 0;
+		
 		$alte3_html = new ALTE3HTML();
 		
 		$tag_Inic_inventario = '';
@@ -74,7 +77,8 @@ class TableroBase extends ControladorBase{
 				),
 				'arr_acciones' => array(
 					array('nombre' => 'pestania01', 'titulo' => 'Contenido', 'icono' => 'far fa-circle'),
-					array('nombre' => 'pestania02', 'titulo' => 'FAQ', 'icono' => 'far fa-circle')
+					array('nombre' => 'pestania02', 'titulo' => 'FAQ', 'icono' => 'far fa-circle'),
+					array('nombre' => 'pestania03', 'titulo' => 'Imágenes', 'icono' => 'far fa-circle')
 				)
 			);
 			$alte3_html->setArrHTMLTagLiNavItem($this->getControlador(), $this->getAccion(), $arr_param);
@@ -92,16 +96,29 @@ class TableroBase extends ControladorBase{
 			$alte3_html->setArrHTMLTagLiNavItemCat('cat_grupo_id', $cat_grupo_id, $this->getControlador(), $this->getAccion(), 'catvistagen', 'cat_grupo', 'catfrmgpo', 'cat_grupo', $this->es_nuevo, 'fas fa-users', 'Grupos');
 			$tag_lnic_cat_grupo = $alte3_html->getHTMLContenido();
 		}
-		$arr_html_tag = array();
-		if($this->tienePermiso('al-usuario') || $this->tienePermiso('al-grupo')){
-			$arr_html_tag = array(
-				'<li class="nav-header">ADMINISTRAR</li>',
-				$tag_Inic_inventario,
-				$tag_Inic_cmpte,
-				$tag_lnic_cat_usuario,
-				$tag_lnic_cat_grupo
-			);
+		
+		$tag_lnic_cat_veh_marca = '';
+		if($this->tienePermiso('al-marca')){
+			$alte3_html->setArrHTMLTagLiNavItemCat('cat_veh_marca_id', $cat_veh_marca_id, $this->getControlador(), $this->getAccion(), 'catvistagen', 'cat_veh_marca', 'catfrmgen', 'cat_veh_marca', $this->es_nuevo, 'fas fa-cube', 'Marcas');
+			$tag_lnic_cat_veh_marca = $alte3_html->getHTMLContenido();
 		}
+		$tag_lnic_cat_veh_modelo = '';
+		if($this->tienePermiso('al-modelo')){
+			$alte3_html->setArrHTMLTagLiNavItemCat('cat_veh_modelo_id', $cat_veh_modelo_id, $this->getControlador(), $this->getAccion(), 'catvistagen', 'cat_veh_modelo', 'catfrmgen', 'cat_veh_modelo', $this->es_nuevo, 'fas fa-cubes', 'Modelos');
+			$tag_lnic_cat_veh_modelo = $alte3_html->getHTMLContenido();
+		}
+		
+		$arr_html_tag = array();
+		
+		$arr_html_tag = array(
+			'<li class="nav-header">ADMINISTRAR</li>',
+			$tag_Inic_inventario,
+			$tag_Inic_cmpte,
+			$tag_lnic_cat_veh_marca,
+			$tag_lnic_cat_veh_modelo,
+			$tag_lnic_cat_usuario,
+			$tag_lnic_cat_grupo,
+		);
 		$this->arr_html_tag['li_ni_sb_cat'] = $arr_html_tag;
 	}
 	/**

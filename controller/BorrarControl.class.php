@@ -79,4 +79,25 @@ class BorrarControl extends ControladorBase{
 		$faq->borrarRegistro($faq_id);
 		redireccionar($this->controlador_destino, $this->accion_destino);
 	}
+	public function cat_veh_marca() {
+		$cat_veh_marca_id = (isset($_REQUEST['cat_veh_marca_id']))? intval($_REQUEST['cat_veh_marca_id']) : 0;
+		if(!$this->tienePermiso('borrar-marca')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Borrar Marca automóvil'));
+		}
+		$cat_veh_marca = new CatN('cat_veh_marca');
+		$cat_veh_marca->borrarRegistro($cat_veh_marca_id);
+		//Se borran todos los registros de la tabla cat_veh_modelo con la marca cat_veh_marca_id
+		$cat_veh_marca->borrarRegistro($cat_veh_marca_id, 'cat_veh_modelo', 'cat_veh_marca_id');
+		
+		redireccionar($this->controlador_destino, $this->accion_destino);
+	}
+	public function cat_veh_modelo() {
+		$cat_veh_modelo_id = (isset($_REQUEST['cat_veh_modelo_id']))? intval($_REQUEST['cat_veh_modelo_id']) : 0;
+		if(!$this->tienePermiso('borrar-modelo')){
+			$this->redireccionaErrorAccion('sin_permisos', array('tit_accion'=>'Borrar modelo automóvil'));
+		}
+		$cat_veh_modelo = new CatN('cat_veh_modelo');
+		$cat_veh_modelo->borrarRegistro($cat_veh_modelo_id);
+		redireccionar($this->controlador_destino, $this->accion_destino);
+	}
 }

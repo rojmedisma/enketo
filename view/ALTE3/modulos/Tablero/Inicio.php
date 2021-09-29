@@ -1,4 +1,3 @@
-<?php if($controlador_obj->tienePermiso('al-usuario') || $controlador_obj->tienePermiso('al-grupo')){ ?>
 <div class="card card-default card-outline">
 	<div class="card-header">
 		<h3 class="card-title">Administrar</h3>
@@ -7,7 +6,6 @@
 		<?php include_once 'Inicio/Catalogos.php';?>
 	</div>
 </div><!-- /.card -->
-<?php }?>
 
 <div class="card card-default card-outline">
 	<div class="card-header">

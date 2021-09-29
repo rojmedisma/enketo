@@ -1,18 +1,20 @@
 <?php
 /**
- * Clase modelo FormularioALTE3
+ * Clase modelo Para los formularios de la plantilla bootstrap Crizal
  * @author Ismael Rojas
  */
-class FormularioALTE3{
+class FormularioCrizal{
 	private bool $lectura = false;
 	private array $arr_cmp_atrib = array();	//Arreglo de atributos/propiedades por campo
 	private bool $usar_div_agrupar = true;
 	private array $arr_error = array();
 	private $ver_nombre_campo = false;
+	private $ver_opc_seleccionar = true;
 	private $con_select2 = false;   //Campos select con las propiedades de la clase select2
 	private $act_opt_desc = false;
 	private $arr_deft_prop = array();
 	private $arr_val_sin_cmp = array();	//Arreglo de validaciones que no estan ligadas a un campo en específico
+	private $txt_opc_seleccionar = "";
 	public function __construct(array $arr_cmps) {
 		//Se hace el primer llenado del arreglo arr_cmp_atrib (Arreglo de atributos/propiedades por campo), con el contenido del arreglo arr_cmp, arreglo obligatorio y necesario
 		if(count($arr_cmps)){
@@ -25,6 +27,7 @@ class FormularioALTE3{
 			}
 			$this->arr_cmp_atrib = $arr_cmp_atrib;
 		}
+		$this->txt_opc_seleccionar = '[Seleccionar]';
 	}
 	/**
 	 * Se agrega el atributo "alerta" al arreglo de atributos/propiedades por campo (arr_cmp_atrib).
@@ -68,6 +71,13 @@ class FormularioALTE3{
 	 */
 	public function setVerNombreCampo(bool $ver_nombre_campo): void{
 	    $this->ver_nombre_campo = $ver_nombre_campo;
+	}
+	/**
+	 * Modifica la variable que indica si se va a mostrar o no la opción [Seleccionar] en los campos select
+	 * @param boolean $ver_nombre_campo	Valor de la bandera
+	 */
+	public function setVerOpcSeleccionar(bool $ver_opc_seleccionar): void{
+		$this->ver_opc_seleccionar = $ver_opc_seleccionar;
 	}
 	/**
 	 * Activa/desactiva la bandera para agrupar el campo con un div de identificación de campo bootstrap
@@ -294,7 +304,7 @@ class FormularioALTE3{
 			$db = new BaseDatos();
 			$and_tbl_borrar = ($and_tbl=="")? " AND `borrar` IS NULL " : $and_tbl;
 			$arr_tbl = $db->getArrDeTabla($tbl_nom, $and_tbl_borrar, $id_val_nom);
-
+			
 			$arr_opt = array();
 			foreach ($arr_tbl as $id_val=>$arr_det){
 				$desc_val = (isset($arr_det[$desc_val_nom]))? $arr_det[$desc_val_nom] : "";
@@ -427,7 +437,9 @@ class FormularioALTE3{
 			$tag_cmp .= ' type="'.$this->getAtributo($cmp_id_nom, 'type').'"';
 			$tag_cmp .= ' id="'.$cmp_id_nom.'"';
 			$tag_cmp .= ' name="'.$cmp_id_nom.'"';
-			$tag_cmp .= ' class="'.$this->getAtributo($cmp_id_nom, 'class').'"';
+			if($this->getAtributo($cmp_id_nom, 'class')!=''){
+				$tag_cmp .= ' class="'.$this->getAtributo($cmp_id_nom, 'class').'"';
+			}
 			$tag_cmp .= ' placeholder="'.$this->getAtributo($cmp_id_nom, 'placeholder').'"';
 			$tag_cmp .= ' value="'.$this->getAtributoValue($cmp_id_nom).'"';
 			$tag_cmp .= ' '.$this->getAtributo($cmp_id_nom, 'readonly');
@@ -591,7 +603,7 @@ class FormularioALTE3{
 	 * @return string
 	 */
 	private function getTagOptions($cmp_id_nom){
-		$arr_tag_options = array('<option value="" data-desc_val="" data-esp_val="">[Seleccionar]</option>');
+		$arr_tag_options = ($this->ver_opc_seleccionar)? array('<option value="" data-desc_val="" data-esp_val="">'.$this->txt_opc_seleccionar.'</option>') : array();
 		$arr_options = $this->getAtributo($cmp_id_nom, 'arr_options');
 		$valor_act = $this->getAtributo($cmp_id_nom, 'value');
 		foreach($arr_options as $arr_detalle){
@@ -879,7 +891,7 @@ class FormularioALTE3{
 				'lectura'=>$lectura,
 				'usar_div_agrupar'=>$usar_div_agrupar,
 				'ver_nombre_campo'=>$ver_nombre_campo,
-				'class'=>'form-control',
+				'class'=>'',
 				'type'=>'text',
 				'div_group_class'=>'form-group',
 			),
@@ -887,7 +899,7 @@ class FormularioALTE3{
 				'lectura'=>$lectura,
 				'usar_div_agrupar'=>$usar_div_agrupar,
 				'ver_nombre_campo'=>$ver_nombre_campo,
-				'class'=>'form-control',
+				'class'=>'',
 				'type'=>'text',
 				'div_group_class'=>'form-group',
 			),
@@ -895,7 +907,7 @@ class FormularioALTE3{
 				'lectura'=>$lectura,
 				'usar_div_agrupar'=>$usar_div_agrupar,
 				'ver_nombre_campo'=>$ver_nombre_campo,
-				'class'=>'form-control',
+				'class'=>'',
 				'type'=>'text',
 				'div_group_class'=>'form-group',
 			),
@@ -903,7 +915,7 @@ class FormularioALTE3{
 				'lectura'=>$lectura,
 				'usar_div_agrupar'=>$usar_div_agrupar,
 				'ver_nombre_campo'=>$ver_nombre_campo,
-				'class'=>'form-control',
+				'class'=>'',
 				'type'=>'email',
 				'div_group_class'=>'form-group',
 			),
@@ -911,7 +923,7 @@ class FormularioALTE3{
 				'lectura'=>$lectura,
 				'usar_div_agrupar'=>$usar_div_agrupar,
 				'ver_nombre_campo'=>$ver_nombre_campo,
-				'class'=>'form-control',
+				'class'=>'',
 				'type'=>'password',
 				'div_group_class'=>'form-group',
 			),
@@ -919,7 +931,7 @@ class FormularioALTE3{
 				'lectura'=>$lectura,
 				'usar_div_agrupar'=>$usar_div_agrupar,
 				'ver_nombre_campo'=>$ver_nombre_campo,
-				'class'=>'form-control',
+				'class'=>'',
 				'type'=>'date',
 				'div_group_class'=>'form-group',
 			),
@@ -941,7 +953,7 @@ class FormularioALTE3{
 				'lectura'=>$lectura,
 				'usar_div_agrupar'=>$usar_div_agrupar,
 				'ver_nombre_campo'=>$ver_nombre_campo,
-				'class'=>'form-control',
+				'class'=>'',
 				'div_group_class'=>'form-group',
 				'rows'=>3,
 			),
@@ -951,7 +963,7 @@ class FormularioALTE3{
 				'ver_nombre_campo'=>$ver_nombre_campo,
 				'con_select2'=>$con_select2,
 				'act_opt_desc'=>$act_opt_desc,
-				'class'=> 'form-control',
+				'class'=> '',
 				'div_group_class'=>'form-group',
 			),
 			'checkbox'=>array(

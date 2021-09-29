@@ -30,14 +30,29 @@ class CatfrmgenControl extends TableroBase{
 		$this->frm_al3 = new FormularioALTE3($this->arr_cmps_frm);
 		parent::setArrHTMLTagLiNavItem();	//Se crean los items del tablero
 	}
-	/**
-	 * Acción para desplegar el panel de importación de muestras 
-	 */
-	public function muestra() {
+	public function cat_veh_marca() {
+		$cat_veh_marca_id = (isset($_REQUEST['cat_veh_marca_id']))? intval($_REQUEST['cat_veh_marca_id']) : 0;
+		$this->setArrDatoVistaValor('tit_forma', 'Catálogo de Marcas de vehículos');
+		if($cat_veh_marca_id){
+			$cat_veh_marca = new CatN('cat_veh_marca');
+			$cat_veh_marca->setArrReg($cat_veh_marca_id);
+			$this->arr_cmps_frm = $cat_veh_marca->getArrReg();
+			$this->es_nuevo = false;
+		}
+		$this->frm_al3 = new FormularioALTE3($this->arr_cmps_frm);
 		parent::setArrHTMLTagLiNavItem();	//Se crean los items del tablero
 	}
-	public function indicadores() {
-		
+	public function cat_veh_modelo() {
+		$cat_veh_modelo_id = (isset($_REQUEST['cat_veh_modelo_id']))? intval($_REQUEST['cat_veh_modelo_id']) : 0;
+		$this->setArrDatoVistaValor('tit_forma', 'Catálogo de modelos de vehículos');
+		if($cat_veh_modelo_id){
+			$cat_veh_modelo = new CatN('cat_veh_modelo');
+			$cat_veh_modelo->setArrReg($cat_veh_modelo_id);
+			$this->arr_cmps_frm = $cat_veh_modelo->getArrReg();
+			$this->es_nuevo = false;
+		}
+		$this->frm_al3 = new FormularioALTE3($this->arr_cmps_frm);
+		$this->frm_al3->setConSelect2(true);
 		parent::setArrHTMLTagLiNavItem();	//Se crean los items del tablero
 	}
 	/**

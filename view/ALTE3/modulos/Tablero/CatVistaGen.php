@@ -18,6 +18,8 @@
 			case 'cat_usuario': include_once 'CatVistaGen/CatUsuario.php';	break;
 			case 'cat_grupo': include_once 'CatVistaGen/CatGrupo.php';	break;
 			case 'log': include_once 'CatVistaGen/Log.php';	break;
+			case 'cat_veh_marca': include_once 'CatVistaGen/wallawalla/CatVehMarca.php';	break;
+			case 'cat_veh_modelo': include_once 'CatVistaGen/wallawalla/CatVehModelo.php';	break;
 		}
 		?>
 	</div>

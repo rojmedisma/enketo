@@ -34,6 +34,8 @@
 									case 'cat_usuario': include_once 'modulos/Tablero/CatFrmGen/CatUsuario.php';	break;
 									case 'log': include_once 'modulos/Tablero/CatFrmGen/Log.php';	break;
 									case 'indicadores': include_once 'modulos/Tablero/CatFrmGen/Indicadores.php';	break;
+									case 'cat_veh_marca': include_once 'modulos/Tablero/CatFrmGen/wallawalla/CatVehMarca.php';	break;
+									case 'cat_veh_modelo': include_once 'modulos/Tablero/CatFrmGen/wallawalla/CatVehModelo.php';	break;
 								}
 								break;
 							case 'catfrmgpo':

@@ -32,7 +32,7 @@
 							<tr>
 								<td>
 									<button type="button" class="btn btn-info btn-sm btn_abrir" data-faq_id="<?=$arr_tbl_det['faq_id']?>" ><i class="fas fa-pencil-alt"></i> Abrir</button>
-									<?= $controlador_obj->getHTMLBtnBorrar($arr_tbl_det['faq_id']) ?>
+									<?= $controlador_obj->getHTMLBtnBorrarFAQ($arr_tbl_det['faq_id']) ?>
 								</td>
 								<td><?= $arr_tbl_det['pregunta']?></td>
 								<td><?= nl2br($arr_tbl_det['respuesta'])?></td>

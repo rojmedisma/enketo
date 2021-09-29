@@ -595,3 +595,7 @@ let formulario_modal = class{
 		})
 	}
 };
+
+let formulario_modal_reg_opc = class{
+	
+}
