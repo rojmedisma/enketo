@@ -523,6 +523,8 @@ function formulario_vaciar(v_frm_id, a_cmps_ocultos){
 	//Se limpian los campos ocultos del formulario, indicados en el argumento a_cmps_ocultos
 	for (let i = 0; i < a_cmps_ocultos.length; i++) {
 		frm_modal.find('[name="' + a_cmps_ocultos[i] + '"]').val("");
+		//Para los campos tipo lectura
+		frm_modal.find('#fg_'+a_cmps_ocultos[i]+' p.text-navy').html("");
 	}
 }
 
@@ -532,6 +534,8 @@ function formulario_llenar(v_frm_id, o_cmps){
 	//console.log(result);
 	for(i in o_cmps){
 		frm_modal.find('[name="' + i + '"]').val(o_cmps[i]);
+		//Para los campos tipo lectura
+		frm_modal.find('#fg_'+i+' p.text-navy').html(o_cmps[i]);
 	}
 }
 /**

@@ -185,4 +185,9 @@ class ModeloBase extends Ayuda{
 	public function getStrQuery(){
 		return $this->str_query;
 	}
+	public function setArrTblVista($and=""){
+		$and_tbl = $this->and_vista." ".$and;
+		$str_query = "SELECT * FROM `{$this->bd->getBD()}`.`{$this->vista_nom}` WHERE 1 ".$and_tbl;
+		$this->arr_tbl = $this->bd->getArrDeQuery($str_query, $this->cmp_id_nom);
+	}
 }
